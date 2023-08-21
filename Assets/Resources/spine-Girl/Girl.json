@@ -1,0 +1,450 @@
+{
+    "skeleton": {
+        "hash": "GtM8YTCtwVE",
+        "spine": "4.1.23",
+        "x": -120,
+        "width": 240,
+        "height": 240,
+        "images": "C:/Users/Win10/Downloads/SimpleCharacter/images",
+        "audio": "C:\\Users\\Win10\\Downloads\\SimpleCharacter"
+    },
+    "bones": [
+        {
+            "name": "root",
+            "y": 120
+        }
+    ],
+    "slots": [
+        {
+            "name": "Girl",
+            "bone": "root",
+            "attachment": "Girl4"
+        }
+    ],
+    "skins": [
+        {
+            "name": "default",
+            "attachments": {
+                "Girl": {
+                    "Girl1": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl2": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl3": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl4": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl5": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl6": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl7": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl8": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl9": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl10": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl11": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl12": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl13": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl14": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl15": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl16": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl17": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl18": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl19": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl20": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl21": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl22": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl23": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl24": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl25": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl26": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl27": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl28": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl29": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl30": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl31": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl32": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl33": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl34": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl35": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl36": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl37": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl38": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl39": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl40": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl41": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl42": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl43": {
+                        "width": 240,
+                        "height": 240
+                    },
+                    "Girl44": {
+                        "width": 240,
+                        "height": 240
+                    }
+                }
+            }
+        }
+    ],
+    "animations": {
+        "idle_down": {
+            "slots": {
+                "Girl": {
+                    "attachment": [
+                        {
+                            "name": "Girl1"
+                        },
+                        {
+                            "time": 0.1166,
+                            "name": "Girl2"
+                        },
+                        {
+                            "time": 0.2334,
+                            "name": "Girl3"
+                        },
+                        {
+                            "time": 0.3500,
+                            "name": "Girl4"
+                        }
+                    ]
+                }
+            }
+        },
+        "idle_left": {
+            "slots": {
+                "Girl": {
+                    "attachment": [
+                        {
+                            "name": "Girl5"
+                        },
+                        {
+                            "time": 0.1166,
+                            "name": "Girl6"
+                        },
+                        {
+                            "time": 0.2334,
+                            "name": "Girl7"
+                        },
+                        {
+                            "time": 0.3500,
+                            "name": "Girl8"
+                        }
+                    ]
+                }
+            }
+        },
+        "idle_right": {
+            "slots": {
+                "Girl": {
+                    "attachment": [
+                        {
+                            "name": "Girl9"
+                        },
+                        {
+                            "time": 0.1166,
+                            "name": "Girl10"
+                        },
+                        {
+                            "time": 0.2334,
+                            "name": "Girl11"
+                        },
+                        {
+                            "time": 0.3500,
+                            "name": "Girl12"
+                        }
+                    ]
+                }
+            }
+        },
+        "idle_up": {
+            "slots": {
+                "Girl": {
+                    "attachment": [
+                        {
+                            "name": "Girl13"
+                        },
+                        {
+                            "time": 0.1166,
+                            "name": "Girl14"
+                        },
+                        {
+                            "time": 0.2334,
+                            "name": "Girl15"
+                        },
+                        {
+                            "time": 0.3500,
+                            "name": "Girl16"
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_down": {
+            "slots": {
+                "Girl": {
+                    "attachment": [
+                        {
+                            "name": "Girl17"
+                        },
+                        {
+                            "time": 0.05,
+                            "name": "Girl18"
+                        },
+                        {
+                            "time": 0.1,
+                            "name": "Girl19"
+                        },
+                        {
+                            "time": 0.1500,
+                            "name": "Girl20"
+                        },
+                        {
+                            "time": 0.2,
+                            "name": "Girl21"
+                        },
+                        {
+                            "time": 0.2500,
+                            "name": "Girl22"
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_left": {
+            "slots": {
+                "Girl": {
+                    "attachment": [
+                        {
+                            "name": "Girl23"
+                        },
+                        {
+                            "time": 0.05,
+                            "name": "Girl24"
+                        },
+                        {
+                            "time": 0.1,
+                            "name": "Girl25"
+                        },
+                        {
+                            "time": 0.1500,
+                            "name": "Girl26"
+                        },
+                        {
+                            "time": 0.2,
+                            "name": "Girl27"
+                        },
+                        {
+                            "time": 0.2500,
+                            "name": "Girl28"
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_right": {
+            "slots": {
+                "Girl": {
+                    "attachment": [
+                        {
+                            "name": "Girl29"
+                        },
+                        {
+                            "time": 0.05,
+                            "name": "Girl30"
+                        },
+                        {
+                            "time": 0.1,
+                            "name": "Girl31"
+                        },
+                        {
+                            "time": 0.1500,
+                            "name": "Girl32"
+                        },
+                        {
+                            "time": 0.2,
+                            "name": "Girl33"
+                        },
+                        {
+                            "time": 0.2500,
+                            "name": "Girl34"
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_up": {
+            "slots": {
+                "Girl": {
+                    "attachment": [
+                        {
+                            "name": "Girl35"
+                        },
+                        {
+                            "time": 0.05,
+                            "name": "Girl36"
+                        },
+                        {
+                            "time": 0.1,
+                            "name": "Girl37"
+                        },
+                        {
+                            "time": 0.1500,
+                            "name": "Girl38"
+                        },
+                        {
+                            "time": 0.2,
+                            "name": "Girl39"
+                        },
+                        {
+                            "time": 0.2500,
+                            "name": "Girl40"
+                        }
+                    ]
+                }
+            }
+        },
+        "die": {
+            "slots": {
+                "Girl": {
+                    "attachment": [
+                        {
+                            "name": "Girl41"
+                        },
+                        {
+                            "time": 0.1166,
+                            "name": "Girl42"
+                        },
+                        {
+                            "time": 0.2334,
+                            "name": "Girl43"
+                        },
+                        {
+                            "time": 0.3500,
+                            "name": "Girl44"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
