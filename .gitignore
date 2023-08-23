@@ -1,0 +1,15 @@
+Library/
+Logs/
+obj/
+Temp/
+UserSettings/
+.vs/
+spine-csharp.csproj
+spine-timeline.csproj
+spine-timeline-editor.csproj
+spine-unity.csproj
+.vsconfig
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
+RGB_1.sln
+spine-unity-editor.csproj
