@@ -36,8 +36,4 @@ public class test : MonoBehaviour
         gameObject.GetComponentInChildren<Text>().text = EnvironmentManager.Instance.GetSeasonString() + " " + TimeManager.Instance.ToString();
     }
 
-    public void aaa()
-    {
-        GameManager.Instance.InitScene();
-    }
 }

@@ -7,11 +7,34 @@ public class AssetManager
     public static GameObject LoadGameObject(string fileName)
     {
         string path = "prefab";
-        return GameObject.Instantiate(Resources.Load<GameObject>(path + "/" + fileName));
+        GameObject go = Resources.Load<GameObject>(path + "/" + fileName);
+        if (go)
+        {
+            return GameObject.Instantiate(go);
+        }
+        else
+            return null;
     }    
     public static GameObject LoadUIPrefab(string fileName)
     {
         string path = "ui_prefab";
-        return GameObject.Instantiate(Resources.Load<GameObject>(path + "/" + fileName));
+        GameObject go = Resources.Load<GameObject>(path + "/" + fileName);
+        if (go)
+        {
+            return GameObject.Instantiate(go);
+        }
+        else
+            return null;
+    }
+    public static GameObject LoadCamera(string fileName)
+    {
+        string path = "camera";
+        GameObject go = Resources.Load<GameObject>(path + "/" + fileName);
+        if (go)
+        {
+            return GameObject.Instantiate(go);
+        }
+        else
+            return null;
     }
 }
