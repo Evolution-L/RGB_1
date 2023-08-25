@@ -20,7 +20,6 @@ public class GrowableCfg : IEnumerable<GrowableCfgItem>
     
     public GrowableCfg()
     {
-        // 使用时加载, 可能导致卡顿, 遇到再说
         cfgs = ConfigLoader.GetDate<string, GrowableCfgItem>("growable");
     }
     

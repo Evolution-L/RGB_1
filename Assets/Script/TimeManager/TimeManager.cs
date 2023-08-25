@@ -26,7 +26,7 @@ public class TimeManager : MonoSingleton<TimeManager>
     private int hour = 0;
     private int day = 1;
     private int month = 1;
-    private int year = 2000;
+    private int year = 1;
 
     private float second = MAX_SECOND;
 
@@ -81,6 +81,19 @@ public class TimeManager : MonoSingleton<TimeManager>
 
     public override string ToString()
     {
-        return $"{Year:D4}年{month:D2}月{day:D2}日\n{hour:D2}时{minute:D2}分";
+        return $"第{Year}年{month:D2}月{day:D2}日\n{hour:D2}:{minute:D2}";
+    }
+
+    public string GetYearString()
+    {
+        return $"第{Year}年";
+    }    
+    public string GetMonthString()
+    {
+        return $"{month:D2}月{day:D2}日";
+    }    
+    public string GetTimeString()
+    {
+        return $"{hour:D2}:{minute:D2}";
     }
 }

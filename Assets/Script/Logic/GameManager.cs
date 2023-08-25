@@ -29,7 +29,7 @@ public class GameManager : MonoSingleton<GameManager>
         roles = new();
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(mainCamera);
-        DontDestroyOnLoad(sceneCamera);
+        //DontDestroyOnLoad(sceneCamera);
         DontDestroyOnLoad(uiCamera);
     }
     // Start is called before the first frame update
@@ -49,6 +49,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void InitScene()
     {
+        Debug.Log(TimeManager.Instance.ToString());
 
         GameObject go = AssetManager.LoadGameObject("player");
         player = new Player();
@@ -56,6 +57,9 @@ public class GameManager : MonoSingleton<GameManager>
         player.Init();
 
         roles.Add(player);
+
+        sceneCamera.transform.SetParentExt(go.transform);
+        sceneCamera.transform.localPosition = new Vector3(0, 0, -10);
 
         UIManager.Instance.Push("Main");
     }

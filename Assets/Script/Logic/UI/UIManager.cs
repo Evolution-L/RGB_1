@@ -13,7 +13,6 @@ public class UIManager : MonoBehaviour
     private const int allLayer = 200;
     [SerializeField]
     private Transform uiParent;
-    private Dictionary<string, IPanelDataProxy> proxtDic = new();
     private Dictionary<string, IUIPanel> panelDic = new();
     private List<string> uiNameList = new();
 
@@ -35,44 +34,16 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public T GetPanelDataProxy<T>(string name) where T : IPanelDataProxy, new()
-    {
-        if (proxtDic.TryGetValue(name, out IPanelDataProxy panelDateProxy))
-        {
-            return panelDateProxy as T;
-        }
-        else
-        {
-            T dataProxy = new T();
-            proxtDic[name] = dataProxy;
-            return dataProxy;
-        }
-
-    }
-
-    public void RemovePanelDataProxy<T>(string name) where T : IPanelDataProxy, new()
-    {
-        if (proxtDic.TryGetValue(name, out IPanelDataProxy panelDateProxy))
-        {
-            panelDateProxy.Dispose();
-            proxtDic.Remove(name);
-        }
-        else
-        {
-            Debug.Log("尝试移除不存在的数据代理");
-        }
-
-    }
-
     public void Push(string name)
     {
         if (!panelDic.ContainsKey(name))
         {
-            if (UIConfig.uiConfig.TryGetValue(name, out Type t))
+            if (UIConfig.uiConfig.TryGetValue(name, out UIInfo info))
             {
                 GameObject go = AssetManager.LoadUIPrefab(name);
                 go.transform.SetParentEx(uiParent);
-                var c = go.AddComponent(t) as IUIPanel;
+                //var c = go.AddComponent(t) as IUIPanel;                
+                var c = go.GetComponent(info.type) as IUIPanel;
                 c.Init();
 
                 panelDic[name] = c;
