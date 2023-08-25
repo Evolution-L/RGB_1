@@ -45,8 +45,10 @@ public struct GrowableCfgItem
 {
     public readonly string id;
 	public readonly string name;
+	public readonly int adaptSeason;
 	public readonly int phaseNum;
 	public readonly List<int> phaseCycle;
 	public readonly List<string> phaseColor;
 	public readonly string res;
+	public readonly int harvestPhase;
 }

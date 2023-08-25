@@ -30,11 +30,24 @@ public class TimeManager : MonoSingleton<TimeManager>
 
     private float second = MAX_SECOND;
 
+    public bool isStart = false;
+
     public int Minute { get => minute; }
     public int Hour { get => hour; }
     public int Day { get => day; }
     public int Month { get => month; }
     public int Year { get => year; }
+
+    public void Init(int year, int month, int day, int hour, int minute)
+    {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        this.hour = hour;
+        this.minute = minute;
+
+        isStart = true;
+    }
 
     // Start is called before the first frame update
     void Awake()
@@ -45,6 +58,10 @@ public class TimeManager : MonoSingleton<TimeManager>
     // Update is called once per frame
     void Update()
     {
+        if (!isStart)
+        {
+            return;
+        }
         second -= Time.deltaTime;
         if (second <= 0)
         {

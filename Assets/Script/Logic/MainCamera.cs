@@ -16,4 +16,9 @@ public class MainCamera : MonoBehaviour
         var cameraData = GetComponent<Camera>().GetUniversalAdditionalCameraData();
         cameraData.cameraStack.Remove(myOverlayCamera);
     }
+    public void ClearCameraStack()
+    {
+        var cameraData = GetComponent<Camera>().GetUniversalAdditionalCameraData();
+        cameraData.cameraStack.Clear();
+    }
 }

@@ -26,6 +26,7 @@ public class EnvironmentManager : MonoSingleton<EnvironmentManager>
     {
         TimeManager.Instance.onMonthChange += OnMonthChange;
         TimeManager.Instance.onMinuteChange += OnMinuteChange;
+        TimeManager.Instance.onDayChange += OnDayChange;
     }
     // Start is called before the first frame update
     void Start()
@@ -87,6 +88,10 @@ public class EnvironmentManager : MonoSingleton<EnvironmentManager>
     }
 
     void OnMinuteChange()
+    {
+        //GrowableManager.Instance.UpdateGrowableState();
+    }    
+    void OnDayChange()
     {
         GrowableManager.Instance.UpdateGrowableState();
     }

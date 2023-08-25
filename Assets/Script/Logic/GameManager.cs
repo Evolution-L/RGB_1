@@ -15,12 +15,11 @@ public class GameManager : MonoSingleton<GameManager>
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         mainCamera = mainCamera == null ? AssetManager.LoadCamera("MainCamera") : mainCamera;
-        sceneCamera = GameObject.FindGameObjectWithTag("SceneCamera");
-        sceneCamera = sceneCamera == null ? AssetManager.LoadCamera("SceneCamera") : sceneCamera;
+
         uiCamera = GameObject.FindGameObjectWithTag("UICamera");
         uiCamera = uiCamera == null ? AssetManager.LoadCamera("UICamera") : uiCamera;
 
-        mainCamera.GetComponent<MainCamera>().AddCameraToStack(sceneCamera.GetComponent<Camera>());
+        mainCamera.GetComponent<MainCamera>().ClearCameraStack();
         mainCamera.GetComponent<MainCamera>().AddCameraToStack(uiCamera.GetComponent<Camera>());
 
         uiCamera.AddComponent<UIManager>();
@@ -35,7 +34,7 @@ public class GameManager : MonoSingleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        InitScene();
+        
     }
 
     // Update is called once per frame
@@ -47,9 +46,22 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
+    public void InitGame(string saveFileName)
+    {
+        TimeManager.Instance.isStart = true;
+        Debug.Log(TimeManager.Instance.ToString());
+        GameDataManager.Instance.Init(saveFileName);
+        InitScene();
+    }
+
     public void InitScene()
     {
-        Debug.Log(TimeManager.Instance.ToString());
+        sceneCamera = GameObject.FindGameObjectWithTag("SceneCamera");
+        sceneCamera = sceneCamera == null ? AssetManager.LoadCamera("SceneCamera") : sceneCamera;
+        mainCamera.GetComponent<MainCamera>().ClearCameraStack();
+        mainCamera.GetComponent<MainCamera>().AddCameraToStack(sceneCamera.GetComponent<Camera>());
+        mainCamera.GetComponent<MainCamera>().AddCameraToStack(uiCamera.GetComponent<Camera>());
+
 
         GameObject go = AssetManager.LoadGameObject("player");
         player = new Player();
