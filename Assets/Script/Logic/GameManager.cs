@@ -48,10 +48,14 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void InitGame(string saveFileName)
     {
-        TimeManager.Instance.isStart = true;
+        // 加载数据
         Debug.Log(TimeManager.Instance.ToString());
         GameDataManager.Instance.Init(saveFileName);
+
+        //初始化场景
         InitScene();
+        // 开启计时
+        TimeManager.Instance.isStart = true;
     }
 
     public void InitScene()
@@ -74,5 +78,11 @@ public class GameManager : MonoSingleton<GameManager>
         sceneCamera.transform.localPosition = new Vector3(0, 0, -10);
 
         UIManager.Instance.Push("Main");
+    }
+
+
+    public void EndGame()
+    {
+        GameDataManager.Instance.SaveData();
     }
 }

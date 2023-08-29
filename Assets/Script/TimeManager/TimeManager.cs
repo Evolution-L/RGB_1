@@ -38,15 +38,14 @@ public class TimeManager : MonoSingleton<TimeManager>
     public int Month { get => month; }
     public int Year { get => year; }
 
-    public void Init(int year, int month, int day, int hour, int minute)
+    public void Init(string json)
     {
-        this.year = year;
-        this.month = month;
-        this.day = day;
-        this.hour = hour;
-        this.minute = minute;
-
-        isStart = true;
+        LitJson.JsonData jsonData = LitJson.JsonMapper.ToObject(json);
+        this.year = (int)jsonData["year"];
+        this.month = (int)jsonData["month"];
+        this.day = (int)jsonData["day"];
+        this.hour = (int)jsonData["hour"];
+        this.minute = (int)jsonData["minute"];
     }
 
     // Start is called before the first frame update
@@ -112,5 +111,20 @@ public class TimeManager : MonoSingleton<TimeManager>
     public string GetTimeString()
     {
         return $"{hour:D2}:{minute:D2}";
+    }
+
+    public string GetDataJson()
+    {
+        Dictionary<string, int> keyValuePairs = new()
+        {
+            { "minute", minute },
+            { "hour", hour },
+            { "day", day },
+            { "month", month },
+            { "year", year },
+        };
+
+        return LitJson.JsonMapper.ToJson(keyValuePairs);
+
     }
 }

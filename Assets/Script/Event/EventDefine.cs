@@ -10,6 +10,9 @@ namespace CustomEvent
         KeyDown,
         KeyUp,
 
+        playerHpChange,
+        playerMpChange,
+
         SeasonChange,
     }
 }

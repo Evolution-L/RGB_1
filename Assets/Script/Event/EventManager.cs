@@ -89,6 +89,45 @@ namespace CustomEvent
                 return;
             }
             throw new Exception(string.Format("广播事件错误：事件{0}对应委托具有不同的类型", eventType));
+        } 
+        public static void Broadcast<T, U>(EventDefine eventType, T args, U args2)
+        {
+            Delegate @delegate;
+            if (!EventManager.m_EventTable.TryGetValue(eventType, out @delegate))
+            {
+                return;
+            }
+            CallBack<T, U> callBack = @delegate as CallBack<T, U>;
+            if (callBack != null)
+            {
+                callBack(args, args2);
+                return;
+            }
+            throw new Exception(string.Format("广播事件错误：事件{0}对应委托具有不同的类型", eventType));
+        }
+
+        public static void AddListener<T>(EventDefine eventType, CallBack<T> callBack)
+        {
+            EventManager.OnListenerAdding(eventType, callBack);
+            EventManager.m_EventTable[eventType] = (CallBack<T>)Delegate.Combine((CallBack<T>)EventManager.m_EventTable[eventType], callBack);
+        }        
+        public static void AddListener<T, U>(EventDefine eventType, CallBack<T, U> callBack)
+        {
+            EventManager.OnListenerAdding(eventType, callBack);
+            EventManager.m_EventTable[eventType] = (CallBack<T, U>)Delegate.Combine((CallBack<T, U>)EventManager.m_EventTable[eventType], callBack);
+        }
+
+        public static void RemoveListener<T>(EventDefine eventType, CallBack<T> callBack)
+        {
+            EventManager.OnListenerRemoving(eventType, callBack);
+            EventManager.m_EventTable[eventType] = (CallBack<T>)Delegate.Remove((CallBack<T>)EventManager.m_EventTable[eventType], callBack);
+            EventManager.OnListenerRemoved(eventType);
+        }
+        public static void RemoveListener<T, U>(EventDefine eventType, CallBack<T, U> callBack)
+        {
+            EventManager.OnListenerRemoving(eventType, callBack);
+            EventManager.m_EventTable[eventType] = (CallBack<T, U>)Delegate.Remove((CallBack<T, U>)EventManager.m_EventTable[eventType], callBack);
+            EventManager.OnListenerRemoved(eventType);
         }
     }
 

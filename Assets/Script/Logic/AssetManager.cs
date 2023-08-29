@@ -36,5 +36,16 @@ public class AssetManager
         }
         else
             return null;
+    }    
+    public static Sprite LoadItemSprite(string fileName)
+    {
+        string path = "texture";
+        Sprite sp = Resources.Load<Sprite>(path + "/item/" + fileName + ".png");
+        if (sp)
+        {
+            return sp;
+        }
+        else
+            return null;
     }
 }
