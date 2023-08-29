@@ -1,5 +1,5 @@
 ﻿id,type,name,iconId,canStack,canDiscard,canUpLevel,canTrade,tradeValue
 str,int,str,str,bool,bool,bool,bool,int
 id,类型,名称,图标id,能否堆叠,能否丢弃,能否升级,能否出售,出售价格
-10001,1,测试道具,10001,TRUE,FALSE,TRUE,TRUE,2
-10002,1,测试道具,10002,TRUE,FALSE,TRUE,TRUE,3
+10001,1,测试道具,05_apple_pie,TRUE,FALSE,TRUE,TRUE,2
+10002,1,测试道具,07_bread,TRUE,FALSE,TRUE,TRUE,3
