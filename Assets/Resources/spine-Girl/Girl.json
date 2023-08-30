@@ -207,7 +207,7 @@
         }
     ],
     "animations": {
-        "idle_down": {
+        "idle_dir_4": {
             "slots": {
                 "Girl": {
                     "attachment": [
@@ -230,7 +230,7 @@
                 }
             }
         },
-        "idle_left": {
+        "idle_dir_5": {
             "slots": {
                 "Girl": {
                     "attachment": [
@@ -253,7 +253,7 @@
                 }
             }
         },
-        "idle_right": {
+        "idle_dir_3": {
             "slots": {
                 "Girl": {
                     "attachment": [
@@ -276,7 +276,7 @@
                 }
             }
         },
-        "idle_up": {
+        "idle_dir_0": {
             "slots": {
                 "Girl": {
                     "attachment": [
@@ -299,7 +299,7 @@
                 }
             }
         },
-        "walk_down": {
+        "walk_dri_4": {
             "slots": {
                 "Girl": {
                     "attachment": [
@@ -330,7 +330,7 @@
                 }
             }
         },
-        "walk_left": {
+        "walk_dir_5": {
             "slots": {
                 "Girl": {
                     "attachment": [
@@ -361,7 +361,7 @@
                 }
             }
         },
-        "walk_right": {
+        "walk_dir_3": {
             "slots": {
                 "Girl": {
                     "attachment": [
@@ -392,7 +392,7 @@
                 }
             }
         },
-        "walk_up": {
+        "walk_dir_0": {
             "slots": {
                 "Girl": {
                     "attachment": [

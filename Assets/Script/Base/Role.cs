@@ -9,28 +9,24 @@ public interface IAge
     public void AddAge();
 }
 
-public abstract class Role
+public abstract class Role : MonoBehaviour
 {
     public StateMachine stateMachine;
     protected AnimController animController;
-    protected Vector2 curDirction = Vector2.zero;
+    protected int curDirction = 4;
 
     protected Spine.AnimationState animationState;
 
-    public GameObject gameObject;
-    public Transform transform;
-
-    public Vector2 CurDirction { get => curDirction; }
+    public int CurDirction { get => curDirction; }
 
     // Start is called before the first frame update
     public virtual void Init()
     {
-        transform = gameObject.transform;
 
         stateMachine = new();
         animController = new();
         stateMachine.Init();
-        animController.Init(this);
+        animController.Init();
 
         stateMachine.onChangeState += animController.OnStateChangeNotify;
     }

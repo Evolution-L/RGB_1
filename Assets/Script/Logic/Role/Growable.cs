@@ -89,6 +89,6 @@ public class Growable : Role, IGrowable, IMouseMessagerTarget
 
     public void MouseClick()
     {
-        Debug.Log("MouseClick");
+        Debug.Log("!@#!@#!@#!@#");
     }
 }

@@ -17,7 +17,7 @@ struct AnimConfig {
         this.breakCur = breakCur;
     }
 }
-public class AnimController
+public class AnimController : MonoBehaviour
 {
     SkeletonAnimation animationState;
     Role role;
@@ -31,13 +31,19 @@ public class AnimController
         { State.Moving, new AnimConfig("walk", true, false)},
         { State.Stop, new AnimConfig("idle", true, false)},
     };
-    public void Init(Role role, string initName = "idle_down", bool loop = true)
+    public void Init(string initName = "idle_down", bool loop = true)
     {
-        this.role = role;
-        this.animationState = role.gameObject.GetComponent<SkeletonAnimation>();
-        this.animationState.state.SetAnimation(0, initName, loop);
-        // 订阅动画播放完毕事件
-        animationState.state.Complete += OnAnimationComplete;
+        this.role = gameObject.GetComponent<Role>();
+        animationState = role.gameObject.GetComponent<SkeletonAnimation>();
+        
+        if (animationState)
+        {
+            // 订阅动画播放完毕事件
+            animationState.state.Complete += OnAnimationComplete;
+            animationState.state.SetAnimation(0, initName, loop);
+        }
+        
+        
 
         //EventManager.Register<EventArgsStateChange>(OnStateChangeNotify);
     }
@@ -63,27 +69,20 @@ public class AnimController
 
     //PlayAnim
     private void PlayAnim(AnimConfig animConfig) {
-        var dir = "_down";
-        if (role.CurDirction == Vector2.left || role.CurDirction == new Vector2(-1,1) || role.CurDirction == new Vector2(-1, -1))
+        var dir = role.CurDirction;
+
+        if (dir == 1 || dir == 2)
         {
-            dir = "_left";
+            dir = 3;
         }
-        else if (role.CurDirction == Vector2.right || role.CurDirction == Vector2.one || role.CurDirction == new Vector2(1, -1))
+        if (dir == 7 || dir == 6)
         {
-            dir = "_right";
+            dir = 5;
         }
-        else if (role.CurDirction == Vector2.up)
-        {
-            dir = "_up";
-        }
-        else if (role.CurDirction == Vector2.down)
-        {
-            dir = "_down";
-        }
-        var anim = animConfig.name + dir;
+        var anim = string.Concat(animConfig.name, "_dir_", dir);
         if (!(GetCurAnim() + dir == anim))
         {
-            animationState.state.SetAnimation(0, anim, animConfig.loop);
+            animationState?.state.SetAnimation(0, anim, animConfig.loop);
         } 
     }
 
@@ -110,7 +109,7 @@ public class AnimController
 
     public string GetCurAnim() 
     {
-        return animationState.state.GetCurrent(0).Animation.Name;
+        return animationState?.state.GetCurrent(0).Animation.Name;
     }
 
     public void OnDestroy()

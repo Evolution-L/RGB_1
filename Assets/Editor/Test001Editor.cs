@@ -32,6 +32,12 @@ public class Test001Editor : Editor
 
             myScript.test3();
 
+        }        
+        if (GUILayout.Button("Éú³ÉÖ²Îï"))
+        {
+
+            myScript.test4();
+
         }
 
     }

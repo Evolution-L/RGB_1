@@ -18,5 +18,9 @@ public class Test001 : MonoBehaviour
     public void test3()
     {
         gameObject.SendMessage("Send");
+    }    
+    public void test4()
+    {
+        GrowableManager.Instance.CreateGrowable("1001");
     }
 }

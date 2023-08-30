@@ -6,7 +6,7 @@ using CustomEvent;
 
 
 
-public partial class Player : Role
+public partial class Player : Role, IMouseMessagerTarget
 {
     public State PlayerState
     {
@@ -54,7 +54,7 @@ public partial class Player : Role
         if (dir != Vector3.zero)
         {
             Vector3 pos = dir * Define.STEP;
-            var temp = new Vector2(dir.x, dir.y);
+            var temp = Vector2ToDir(dir);
             if (curDirction != temp)
             {
                 animController.OnStateChangeNotify();
@@ -70,6 +70,44 @@ public partial class Player : Role
         }
     }
 
+    private int Vector2ToDir(Vector2 v2)
+    {
+        if (v2.x == 0 && v2.y == 1)
+        {
+            return 0;
+        }
+        else if (v2.x == 1 && v2.y == 1)
+        {
+            return 1;
+        }
+        else if (v2.x == 1 && v2.y == 0)
+        {
+            return 2;
+        }
+        else if (v2.x == 1 && v2.y == -1)
+        {
+            return 3;
+        }
+        else if (v2.x == 0 && v2.y == -1)
+        {
+            return 4;
+        }
+        else if (v2.x == -1 && v2.y == -1)
+        {
+            return 5;
+        }
+        else if (v2.x == -1 && v2.y == 0)
+        {
+            return 6;
+        }
+        else if (v2.x == -1 && v2.y == -1)
+        {
+            return 7;
+        }
+
+        return 4;
+    }
+
     private bool CheckState(State state)
     {
         return stateMachine.CheckState(state);
@@ -83,5 +121,19 @@ public partial class Player : Role
     public override void PlayAnim(int args)
     {
         
+    }
+
+    public void MouseOver()
+    {
+        Debug.Log("AAAAAA  ");
+    }
+
+    public void MouseExit()
+    {
+    }
+
+    public void MouseClick()
+    {
+        Debug.Log("AAAAAA  ");
     }
 }

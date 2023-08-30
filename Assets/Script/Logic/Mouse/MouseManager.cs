@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MouseMessager : MonoSingleton<MouseMessager>
+//public class MouseMessager : MonoSingleton<MouseMessager>
+public class MouseManager : MonoBehaviour
 {
     private GameObject prevObject;
 
@@ -24,38 +25,50 @@ public class MouseMessager : MonoSingleton<MouseMessager>
     // Update is called once per frame
     void Update()
     {
+        if (!Camera.main)
+        {
+            return;
+        }
+        //GameObject target = getMouseOver();
+        //if (target != prevObject)
+        //{
+        //    prevObject = target;
+        //    ExecuteEvents.Execute<IMouseMessagerTarget>(target, null, (handle, data) => {
+        //        handle.MouseOver();
+        //    });
+        //}
+        //else
+        //{
+        //    if (prevObject)
+        //    {
+        //        ExecuteEvents.Execute<IMouseMessagerTarget>(prevObject, null, (handle, data) => {
+        //            handle.MouseExit();
+        //        });
+        //        prevObject = null;
+        //    }
+        //}
         GameObject target = getMouseOver();
         if (target)
         {
-            prevObject = target;
-            ExecuteEvents.Execute<IMouseMessagerTarget>(target, null, (handle, data) => {
-                handle.MouseOver();
-            });
-        }
-        else
-        {
-            if (prevObject)
-            {
-                ExecuteEvents.Execute<IMouseMessagerTarget>(prevObject, null, (handle, data) => {
-                    handle.MouseExit();
-                });
-                prevObject = null;
-            }
+            target.GetComponent<IMouseMessagerTarget>()?.MouseClick();
         }
     }
 
     private GameObject getMouseOver()
     {
-        List<RaycastResult> hits = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current)
+        // 获取鼠标位置
+        Vector3 mousePosition = Input.mousePosition;
+
+
+        // 将屏幕坐标转换为世界坐标
+        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+
+        // 发射射线
+        RaycastHit2D hit = Physics2D.Raycast(worldMousePosition, Vector2.zero);
+        if (hit.collider)
         {
-            position = Input.mousePosition
-        }, hits);
-        foreach (RaycastResult rr in hits)
-        {
-            GameObject go = rr.gameObject;
-            if (go)
-                return go;
+            return hit.collider.gameObject;
         }
         return null;
     }

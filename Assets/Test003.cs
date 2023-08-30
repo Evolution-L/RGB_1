@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Test003 : MonoBehaviour
 {
+    public string content;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,6 @@ public class Test003 : MonoBehaviour
 
     public void Send()
     {
-        Debug.Log("HFGFHFGFHGFHFG");
+        Debug.Log(content);
     }
 }

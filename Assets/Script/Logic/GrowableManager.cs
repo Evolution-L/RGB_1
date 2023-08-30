@@ -12,8 +12,7 @@ public class GrowableManager : MonoSingleton<GrowableManager>
         if (GrowableCfg.Instance.cfgs.TryGetValue(id, out GrowableCfgItem item))
         {
             GameObject go = AssetManager.LoadGameObject(item.res);
-            Growable growable = new Growable();
-            growable.gameObject = go;
+            Growable growable = go.AddComponent<Growable>();
             growable.Init(allGlowable.Count + item.id, item);
             AddGrowable(growable);
         }

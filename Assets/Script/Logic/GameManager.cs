@@ -8,26 +8,26 @@ public class GameManager : MonoSingleton<GameManager>
 
     public List<Role> roles;
 
-    private GameObject mainCamera;
-    private GameObject sceneCamera;
+    private GameObject OutPutCamera;
+    public GameObject sceneCamera;
     private GameObject uiCamera;
     private void Awake()
     {
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        mainCamera = mainCamera == null ? AssetManager.LoadCamera("MainCamera") : mainCamera;
+        OutPutCamera = GameObject.FindGameObjectWithTag("OutPutCamera");
+        OutPutCamera = OutPutCamera == null ? AssetManager.LoadCamera("OutPutCamera") : OutPutCamera;
 
         uiCamera = GameObject.FindGameObjectWithTag("UICamera");
         uiCamera = uiCamera == null ? AssetManager.LoadCamera("UICamera") : uiCamera;
 
-        mainCamera.GetComponent<MainCamera>().ClearCameraStack();
-        mainCamera.GetComponent<MainCamera>().AddCameraToStack(uiCamera.GetComponent<Camera>());
+        OutPutCamera.GetComponent<MainCamera>().ClearCameraStack();
+        OutPutCamera.GetComponent<MainCamera>().AddCameraToStack(uiCamera.GetComponent<Camera>());
 
         uiCamera.AddComponent<UIManager>();
 
         //ConfigLoader.Instance.Loader();
         roles = new();
         DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(mainCamera);
+        DontDestroyOnLoad(OutPutCamera);
         //DontDestroyOnLoad(sceneCamera);
         DontDestroyOnLoad(uiCamera);
     }
@@ -60,16 +60,15 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void InitScene()
     {
-        sceneCamera = GameObject.FindGameObjectWithTag("SceneCamera");
+        sceneCamera = GameObject.FindGameObjectWithTag("MainCamera");
         sceneCamera = sceneCamera == null ? AssetManager.LoadCamera("SceneCamera") : sceneCamera;
-        mainCamera.GetComponent<MainCamera>().ClearCameraStack();
-        mainCamera.GetComponent<MainCamera>().AddCameraToStack(sceneCamera.GetComponent<Camera>());
-        mainCamera.GetComponent<MainCamera>().AddCameraToStack(uiCamera.GetComponent<Camera>());
+        OutPutCamera.GetComponent<MainCamera>().ClearCameraStack();
+        OutPutCamera.GetComponent<MainCamera>().AddCameraToStack(sceneCamera.GetComponent<Camera>());
+        OutPutCamera.GetComponent<MainCamera>().AddCameraToStack(uiCamera.GetComponent<Camera>());
 
 
         GameObject go = AssetManager.LoadGameObject("player");
         player = new Player();
-        player.gameObject = go;
         player.Init();
 
         roles.Add(player);
