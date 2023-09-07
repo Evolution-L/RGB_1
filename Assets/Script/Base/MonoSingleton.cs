@@ -22,7 +22,9 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
                 }
                 try
                 {
-                    instance = go.AddComponent<T>();
+                    instance = go.GetComponent<T>();
+                    if (instance == null)
+                        instance = go.AddComponent<T>();
                 }
                 catch
                 {
@@ -37,7 +39,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     }
 
     /// <summary>
-    /// Ïú»Ùµ¥Àý
+    /// ï¿½ï¿½ï¿½Ùµï¿½ï¿½ï¿½
     /// </summary>
     public virtual void Discard()
     {

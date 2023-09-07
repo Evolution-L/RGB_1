@@ -4,15 +4,38 @@ using UnityEngine;
 using LitJson;
 using System.IO;
 
-public class GameDataManager: Singleton<GameDataManager>
+public class GameDataManager
 {
     public BagDataProxy bagData;
     public PlayerDataProxy playerData;
     public string fileName = "";
     public string directoryPath = "";
     public string filePath = "";
+    
+    public readonly string[] saveFileNames; 
 
-    public void Init(string saveFileName)
+    public GameDataManager()
+    {
+        directoryPath = Path.Combine(Application.persistentDataPath, "save");
+
+        DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath); 
+        FileInfo[] files = directoryInfo.GetFiles();
+
+        saveFileNames = new string[3];
+        for (int i = 0; i< 3; i ++)
+        {
+            if  (i < files.Length)
+            {
+                saveFileNames[i] = files[i].Name; 
+            }
+            else
+            {
+                saveFileNames[i] = "";
+            }
+        }
+    }
+
+    public void LoadGameArchive(string saveFileName)
     {
         bagData = new();
         playerData = new();
@@ -22,10 +45,10 @@ public class GameDataManager: Singleton<GameDataManager>
         string readData = "";
         if (File.Exists(filePath))
         {
-            // ´æµµÎÄ¼þ´æÔÚ
+            // ï¿½æµµï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
             using (StreamReader sr = File.OpenText(filePath))
             {
-                //Êý¾Ý¶ÁÈ¡
+                //ï¿½ï¿½ï¿½Ý¶ï¿½È¡
                 readData = sr.ReadToEnd();
                 sr.Close();
             }
@@ -49,7 +72,7 @@ public class GameDataManager: Singleton<GameDataManager>
         else
         {
             playerData = new();
-            // ´æµµÎÄ¼þ²»´æÔÚ
+            // ï¿½æµµï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (!File.Exists(directoryPath))
             {
                 Directory.CreateDirectory(directoryPath);
