@@ -8,6 +8,13 @@ using MoleMole;
 
 public class MainViewContext : BaseContext
 {
+    public string curSeason;
+    public string curHp;
+    public string curMp;
+    public string MaxHp;
+    public string MaxMp;
+
+    
     public MainViewContext() : base(UIType.MainView)
     {
     }
@@ -25,10 +32,6 @@ public class MainView : AnimateView
     public Text hpValue;
     public Text mpValue;
 
-
-    GameDataManager gameDataManager ;
-
-
     // Start is called before the first frame update
     void Start()
     {   
@@ -39,14 +42,13 @@ public class MainView : AnimateView
     {
         UpdateDate();
         TimeManager.Instance.onMinuteChange += UpdateDate;
-        gameDataManager = Singleton<GameDataManager>.Instance;
+        // gameDataManager = Singleton<GameDataManager>.Instance;
 
-        OnPlayerHpChange(gameDataManager.playerData.CurHp, gameDataManager.playerData.MaxHp);
-        OnPlayerMpChange(gameDataManager.playerData.CurMp, gameDataManager.playerData.MaxMp);
+        // OnPlayerHpChange();
+        // OnPlayerMpChange();
 
-
-        EventManager.AddListener<int, int>(EventDefine.playerHpChange, OnPlayerHpChange);
-        EventManager.AddListener<int, int>(EventDefine.playerMpChange, OnPlayerMpChange);
+        // EventManager.AddListener<int, int>(EventDefine.playerHpChange, OnPlayerHpChange);
+        // EventManager.AddListener<int, int>(EventDefine.playerMpChange, OnPlayerMpChange);
     }
 
     // Update is called once per frame
@@ -59,7 +61,7 @@ public class MainView : AnimateView
     {
         dateText.text = TimeManager.Instance.GetMonthString() + "\n" + TimeManager.Instance.GetTimeString();
         yearText.text = TimeManager.Instance.GetYearString();
-        seasonText.text = EnvironmentManager.Instance.GetSeasonString();
+        // seasonText.text = EnvironmentManager.Instance.GetSeasonString();
     }
 
     private void OnPlayerHpChange(int value, int maxVlaue)
@@ -76,7 +78,7 @@ public class MainView : AnimateView
 
     public void Dispose()
     {
-        EventManager.RemoveListener<int, int>(EventDefine.playerHpChange, OnPlayerHpChange);
-        EventManager.RemoveListener<int, int>(EventDefine.playerMpChange, OnPlayerMpChange);
+        // EventManager.RemoveListener<int, int>(EventDefine.playerHpChange, OnPlayerHpChange);
+        // EventManager.RemoveListener<int, int>(EventDefine.playerMpChange, OnPlayerMpChange);
     }
 }

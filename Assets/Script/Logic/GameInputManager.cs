@@ -36,12 +36,12 @@ public class GameInputManager : MonoBehaviour
         {
             if (Input.GetKeyDown(item))
             {
-                EventManager.Broadcast(EventDefine.KeyDown, item);
+                // EventManager.Broadcast(EventDefine.KeyDown, item);
             }
 
             if (Input.GetKeyUp(item))
             {
-                EventManager.Broadcast(EventDefine.KeyUp, item);
+                // EventManager.Broadcast(EventDefine.KeyUp, item);
             }
         }
     }

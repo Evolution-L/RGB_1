@@ -9,11 +9,11 @@ public class Test001 : MonoBehaviour
     public string aaa;
     public void test1()
     {
-        GameManager.Instance.InitGame("test001");
+        // GameManager.Instance.InitGame("test001");
     }
     public void test2()
     {
-        GameManager.Instance.EndGame();
+        // GameManager.Instance.EndGame();
     }    
     public void test3()
     {
@@ -21,6 +21,6 @@ public class Test001 : MonoBehaviour
     }    
     public void test4()
     {
-        GrowableManager.Instance.CreateGrowable("1001");
+        // GrowableManager.Instance.CreateGrowable("1001");
     }
 }

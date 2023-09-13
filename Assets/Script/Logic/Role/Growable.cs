@@ -10,7 +10,7 @@ public interface IGrowable : IAge
 
 };
 
-public class Growable : Role, IGrowable, IMouseMessagerTarget
+public class Growable : Role, IGrowable
 {
     private string rid;
     private GrowableCfgItem config;

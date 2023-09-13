@@ -1,0 +1,20 @@
+{
+    "name": "Role",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a41867895dc6d2648ba905d12b65bcd9",
+        "GUID:68765d262e2128e4ab49c983f3411946",
+        "GUID:72d1fea872bd7a449bf3818f2b0a6708",
+        "GUID:7e038919eb8a12c40b4b9ba7a44ff904",
+        "GUID:74cd7589a19bb9240bf2c3acad7569d8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

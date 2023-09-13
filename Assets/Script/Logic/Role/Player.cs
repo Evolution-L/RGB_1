@@ -6,7 +6,7 @@ using CustomEvent;
 
 
 
-public partial class Player : Role, IMouseMessagerTarget
+public partial class Player : Role
 {
     public State PlayerState
     {
