@@ -1,3 +1,5 @@
 # RGB_1
 
-testtesttesttesttesttesttesttesttesttest
+RBG游戏
+
+计划包含  基本玩法, 季节, 作物
