@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using CustomEvent;
 using MoleMole;
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
@@ -29,6 +31,9 @@ public class GameManager : MonoSingleton<GameManager>
         DontDestroyOnLoad(gameRoot);
 
         Singleton<GameDataManager>.Create();
+
+        EventManager.Register<GameStartEventArgs>(InitGame);
+
     }
     // Start is called before the first frame update
     void Start()
@@ -42,11 +47,11 @@ public class GameManager : MonoSingleton<GameManager>
 
     }
 
-    public void InitGame(string saveFileName)
+    public void InitGame(GameStartEventArgs gameStartEventArgs)
     {
         Debug.Log(TimeManager.Instance.ToString());
         
-        Singleton<GameDataManager>.Instance.LoadGameArchive(saveFileName);
+        Singleton<GameDataManager>.Instance.LoadGameArchive(gameStartEventArgs.saveFileName);
         InitScene();
         TimeManager.Instance.isStart = true;
     }
@@ -67,5 +72,10 @@ public class GameManager : MonoSingleton<GameManager>
     public void EndGame()
     {
         Singleton<GameDataManager>.Instance.SaveData();
+    }
+
+    public void Destroy()
+    {
+        EventManager.Register<GameStartEventArgs>(InitGame);
     }
 }

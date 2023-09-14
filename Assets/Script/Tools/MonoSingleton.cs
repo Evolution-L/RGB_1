@@ -33,9 +33,14 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
                 }
                 
                 DontDestroyOnLoad(go);
+                instance.Init();
             }
             return instance;
         }
+    }
+
+    public virtual void Init(){
+
     }
 
     /// <summary>

@@ -68,8 +68,18 @@ public class TimerDataProxy : DataProxy
         }
     }
 
+    public TimerDataProxy()
+    {
+        yearDateChangeEventArgs = new();
+        monthDateChangeEventArgs = new();
+        dayDateChangeEventArgs = new();
+        hourDateChangeEventArgs = new();
+        minuteDateChangeEventArgs = new();
+    }
+
     public void Init(string json)
     {
+        Debug.Log("!!!!!!");
         LitJson.JsonData jsonData = LitJson.JsonMapper.ToObject(json);
         this.year = (int)jsonData["year"];
         this.month = (int)jsonData["month"];

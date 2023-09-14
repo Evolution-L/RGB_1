@@ -10,33 +10,9 @@ namespace CustomEvent
         string argsType { get => "args"; }
     }
 
-    /// <summary>
-    /// 测试用
-    /// </summary>
-    public class EventTest_1 : IEventArgs
+    public class GameStartEventArgs :IEventArgs
     {
-        public string name;
-        public EventTest_1(string name)
-        {
-            this.name = name;
-        }
-    }
-    public class EventArgsKeyDown : IEventArgs
-    {
-        public KeyCode key;
-        public EventArgsKeyDown()
-        {
-            this.key = KeyCode.None;
-        }
-    }
-
-    public class EventArgsKeyUp : IEventArgs
-    {
-        public KeyCode key;
-        public EventArgsKeyUp()
-        {
-            this.key = KeyCode.None;
-        }
+        public string saveFileName;
     }
 
     public class EventArgsStateChange : IEventArgs

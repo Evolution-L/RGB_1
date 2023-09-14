@@ -10,10 +10,7 @@ public class TimeManager : MonoSingleton<TimeManager>
     const int MAX_MINUTE = 60;
     const int MAX_HOUR = 24;
     const int MAX_DAY = 30;
-    const int MAX_MONTH = 12;
-
-    TimerDataProxy data;
-    
+    const int MAX_MONTH = 12;    
     DateChangeEventArgs dateChangeEventArgs;
 
     public delegate void MinuteChange();
@@ -32,15 +29,16 @@ public class TimeManager : MonoSingleton<TimeManager>
     public bool isStart = false;
 
 
-    public void Init(string json)
+    public override void Init()
     {
-
+        dateChangeEventArgs = new();
+        onMinuteChange?.Invoke();
     }
 
     // Start is called before the first frame update
     void Awake()
     {
-        onMinuteChange?.Invoke();
+         
     }
 
     // Update is called once per frame
@@ -53,6 +51,7 @@ public class TimeManager : MonoSingleton<TimeManager>
         second -= Time.deltaTime;
         if (second <= 0)
         {
+            var data = Singleton<TimerDataProxy>.Instance;
             second = MAX_SECOND;
             data.Minute += 1;
 
@@ -72,15 +71,10 @@ public class TimeManager : MonoSingleton<TimeManager>
                         {
                             data.Month = 1;
                             data.Year += 1;
-                            // onYearChange?.Invoke();
                         }
-                        // onMonthChange?.Invoke();
                     }
-                    // onDayChange?.Invoke();
                 }
-                // onHourChange?.Invoke();
             }
-            // onMinuteChange?.Invoke();
             // 在这里主动触发一次时间变化函数, 避免重复触发
             DataChange();
         }
@@ -88,6 +82,8 @@ public class TimeManager : MonoSingleton<TimeManager>
 
     public void DataChange()
     {
+        var data = Singleton<TimerDataProxy>.Instance;
+
         dateChangeEventArgs.year = data.Year;
         dateChangeEventArgs.month = data.Month;
         dateChangeEventArgs.day = data.Day;

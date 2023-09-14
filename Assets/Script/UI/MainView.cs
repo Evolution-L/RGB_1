@@ -81,5 +81,6 @@ public class MainView : AnimateView
     {
         // EventManager.RemoveListener<int, int>(EventDefine.playerHpChange, OnPlayerHpChange);
         // EventManager.RemoveListener<int, int>(EventDefine.playerMpChange, OnPlayerMpChange);
+        EventManager.UnRegister<DateChangeEventArgs>(UpdateDate);
     }
 }
