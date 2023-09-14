@@ -7,13 +7,14 @@ namespace CustomEvent
     public interface IEventEntity
     {
         public void ClearAllListeners();
+        public void Dispatch(IEventArgs eventArgs);
     }
     public class EventEntity<T> : IEventEntity where T : IEventArgs
     {
         Action<T> action;
-        public void Dispatch(T eventArges)
+        public void Dispatch(IEventArgs eventArges)
         {
-            action?.Invoke(eventArges);
+            action?.Invoke((T)eventArges);
         }
 
         public void Register(Action<T> action)
@@ -30,31 +31,20 @@ namespace CustomEvent
         {
             this.action = null;
         }
+
     }
 
     public static class EventManager
     {
         private static readonly Dictionary<Type, IEventEntity> eventEntitys = new();
 
-        public static EventEntity<T> GetEventManager<T>() where T : IEventArgs
-        {
-            var eventType = typeof(T);
-            if (!eventEntitys.ContainsKey(eventType))
-            {
-                eventEntitys[eventType] = new EventEntity<T>();
-            }
-
-            return (EventEntity<T>)eventEntitys[eventType];
-        }
-
-        public static void Dispatch<T>(T eventArges) where T : IEventArgs
+        public static void Dispatch(IEventArgs eventArges)
         {
             // var eventType = typeof(T);
             var eventType = eventArges.GetType();
             if (eventEntitys.TryGetValue(eventType, out IEventEntity ieventEntity))
             {
-                EventEntity<T> eventEntity = (EventEntity<T>)ieventEntity;
-                eventEntity.Dispatch(eventArges);
+                ieventEntity.Dispatch(eventArges);
             }
         }
 
@@ -95,20 +85,6 @@ namespace CustomEvent
                 }
             }
             eventEntitys.Clear();
-        }
-
-        public static void A<T>(T a)
-        {
-
-        }
-
-        public static void B()
-        {
-            A<int>(1);
-            A<string>("q");
-            A<bool>(false);
-            A<float>(1);
-            A<long>(1);
         }
     }
 }
