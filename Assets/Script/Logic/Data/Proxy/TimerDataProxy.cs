@@ -5,7 +5,6 @@ using CustomEvent;
 
 public class TimerDataProxy : DataProxy
 {
-    DateChangeEventArgs dateChangeEventArgs;
     YearDateChangeEventArgs yearDateChangeEventArgs;
     MonthDateChangeEventArgs monthDateChangeEventArgs;
     DayDateChangeEventArgs dayDateChangeEventArgs;
@@ -24,7 +23,8 @@ public class TimerDataProxy : DataProxy
         set
         {
              minuteDateChangeEventArgs.minute = this.minute = value;
-            EventManager.Dispatch(minuteDateChangeEventArgs);
+            // EventManager.Dispatch(minuteDateChangeEventArgs);
+            // DataChange();
         }
     }
     public int Hour
@@ -33,7 +33,8 @@ public class TimerDataProxy : DataProxy
         set
         {
             hourDateChangeEventArgs.hour = this.hour = value;
-            EventManager.Dispatch(hourDateChangeEventArgs);
+            // EventManager.Dispatch(hourDateChangeEventArgs);
+            // DataChange();
         }
     }
     public int Day
@@ -42,7 +43,8 @@ public class TimerDataProxy : DataProxy
         set
         {
             dayDateChangeEventArgs.day = this.day = value;
-            EventManager.Dispatch(dayDateChangeEventArgs);
+            // EventManager.Dispatch(dayDateChangeEventArgs);
+            // DataChange();
         }
     }
     public int Month
@@ -51,7 +53,8 @@ public class TimerDataProxy : DataProxy
         set
         {
             monthDateChangeEventArgs.month = this.month = value;
-            EventManager.Dispatch(monthDateChangeEventArgs);
+            // EventManager.Dispatch(monthDateChangeEventArgs);
+            // DataChange();
         }
     }
     public int Year
@@ -60,7 +63,8 @@ public class TimerDataProxy : DataProxy
         set
         {
             yearDateChangeEventArgs.year = this.year = value;
-            EventManager.Dispatch(yearDateChangeEventArgs);
+            // EventManager.Dispatch(yearDateChangeEventArgs);
+            // DataChange();
         }
     }
 
@@ -86,15 +90,5 @@ public class TimerDataProxy : DataProxy
         };
 
         return LitJson.JsonMapper.ToJson(keyValuePairs);
-    }
-
-    private void DataChange()
-    {
-        dateChangeEventArgs.year = this.year;
-        dateChangeEventArgs.month = this.month;
-        dateChangeEventArgs.day = this.day;
-        dateChangeEventArgs.hour = this.hour;
-        dateChangeEventArgs.minute = this.minute;
-        EventManager.Dispatch(dateChangeEventArgs);
     }
 }

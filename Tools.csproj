@@ -759,5 +759,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="DataManager.csproj" />
+    <ProjectReference Include="CustomEvent.csproj" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using CustomEvent;
 using UnityEngine;
 
 
@@ -12,6 +13,8 @@ public class TimeManager : MonoSingleton<TimeManager>
     const int MAX_MONTH = 12;
 
     TimerDataProxy data;
+    
+    DateChangeEventArgs dateChangeEventArgs;
 
     public delegate void MinuteChange();
     public event MinuteChange onMinuteChange;
@@ -69,16 +72,28 @@ public class TimeManager : MonoSingleton<TimeManager>
                         {
                             data.Month = 1;
                             data.Year += 1;
-                            onYearChange?.Invoke();
+                            // onYearChange?.Invoke();
                         }
-                        onMonthChange?.Invoke();
+                        // onMonthChange?.Invoke();
                     }
-                    onDayChange?.Invoke();
+                    // onDayChange?.Invoke();
                 }
-                onHourChange?.Invoke();
+                // onHourChange?.Invoke();
             }
-            onMinuteChange?.Invoke();
+            // onMinuteChange?.Invoke();
+            // 在这里主动触发一次时间变化函数, 避免重复触发
+            DataChange();
         }
+    }
+
+    public void DataChange()
+    {
+        dateChangeEventArgs.year = data.Year;
+        dateChangeEventArgs.month = data.Month;
+        dateChangeEventArgs.day = data.Day;
+        dateChangeEventArgs.hour = data.Hour;
+        dateChangeEventArgs.minute = data.Minute;
+        EventManager.Dispatch(dateChangeEventArgs);
     }
 
     public override string ToString()
@@ -89,11 +104,11 @@ public class TimeManager : MonoSingleton<TimeManager>
     public string GetYearString()
     {
         return $"{data.Year}年";
-    }    
+    }
     public string GetMonthString()
     {
         return $"{data.Month:D2}月{data.Day:D2}日";
-    }    
+    }
     public string GetTimeString()
     {
         return $"{data.Hour:D2}:{data.Minute:D2}";
