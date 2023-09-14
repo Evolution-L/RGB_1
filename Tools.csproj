@@ -54,7 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Tools\Tools.cs" />
-    <Compile Include="Assets\Script\Tools\TimeManager.cs" />
     <Compile Include="Assets\Script\Tools\DictionaryExtension.cs" />
     <Compile Include="Assets\Script\Tools\TransformExtension.cs" />
     <Compile Include="Assets\Script\Tools\MonoSingleton.cs" />
@@ -758,7 +757,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="DataManager.csproj" />
     <ProjectReference Include="CustomEvent.csproj" />
   </ItemGroup>
 </Project>

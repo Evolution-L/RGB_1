@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Logic\MainCamera.cs" />
     <Compile Include="Assets\Script\Logic\Mouse\MouseManager.cs" />
+    <Compile Include="Assets\Script\Logic\Manager\TimeManager.cs" />
     <Compile Include="Assets\Script\Logic\GameRoot.cs" />
     <Compile Include="Assets\Script\Logic\Manager\Growable\GrowableManager.cs" />
     <Compile Include="Assets\Script\Logic\Mouse\IMouseMessagerTarget.cs" />

@@ -22,7 +22,7 @@ public class TimerDataProxy : DataProxy
         get => minute;
         set
         {
-             minuteDateChangeEventArgs.minute = this.minute = value;
+            minuteDateChangeEventArgs.minute = this.minute = value;
             // EventManager.Dispatch(minuteDateChangeEventArgs);
             // DataChange();
         }
@@ -90,5 +90,23 @@ public class TimerDataProxy : DataProxy
         };
 
         return LitJson.JsonMapper.ToJson(keyValuePairs);
+    }
+
+    public override string ToString()
+    {
+        return $"{this.Year}年{this.Month:D2}月{this.Day:D2}日\n{this.Hour:D2}:{this.Minute:D2}";
+    }
+
+    public string GetYearString()
+    {
+        return $"{this.Year}年";
+    }
+    public string GetMonthString()
+    {
+        return $"{this.Month:D2}月{this.Day:D2}日";
+    }
+    public string GetTimeString()
+    {
+        return $"{this.Hour:D2}:{this.Minute:D2}";
     }
 }

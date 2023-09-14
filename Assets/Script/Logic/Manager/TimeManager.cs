@@ -95,22 +95,4 @@ public class TimeManager : MonoSingleton<TimeManager>
         dateChangeEventArgs.minute = data.Minute;
         EventManager.Dispatch(dateChangeEventArgs);
     }
-
-    public override string ToString()
-    {
-        return $"{data.Year}年{data.Month:D2}月{data.Day:D2}日\n{data.Hour:D2}:{data.Minute:D2}";
-    }
-
-    public string GetYearString()
-    {
-        return $"{data.Year}年";
-    }
-    public string GetMonthString()
-    {
-        return $"{data.Month:D2}月{data.Day:D2}日";
-    }
-    public string GetTimeString()
-    {
-        return $"{data.Hour:D2}:{data.Minute:D2}";
-    }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using LitJson;
 using System.IO;
+using System;
 
 public class GameDataManager
 {
@@ -12,22 +13,22 @@ public class GameDataManager
     public string fileName = "";
     public string directoryPath = "";
     public string filePath = "";
-    
+
     public readonly string[] saveFileNames;
 
     public GameDataManager()
     {
         directoryPath = Path.Combine(Application.persistentDataPath, "save");
 
-        DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath); 
+        DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
         FileInfo[] files = directoryInfo.GetFiles();
 
         saveFileNames = new string[3];
-        for (int i = 0; i< 3; i ++)
+        for (int i = 0; i < 3; i++)
         {
-            if  (i < files.Length)
+            if (i < files.Length)
             {
-                saveFileNames[i] = files[i].Name; 
+                saveFileNames[i] = files[i].Name;
             }
             else
             {
@@ -38,9 +39,13 @@ public class GameDataManager
 
     public void LoadGameArchive(string saveFileName)
     {
-        bagData = new();
-        playerData = new();
-        timerData = new();
+        Singleton<PlayerDataProxy>.Create();
+        Singleton<BagDataProxy>.Create();
+        Singleton<TimerDataProxy>.Create();
+        playerData = Singleton<PlayerDataProxy>.Instance;
+        bagData = Singleton<BagDataProxy>.Instance;
+        timerData = Singleton<TimerDataProxy>.Instance;
+        
         this.fileName = saveFileName;
         directoryPath = Path.Combine(Application.persistentDataPath, "save");
         filePath = Path.Combine(directoryPath, saveFileName + ".json");
@@ -61,7 +66,7 @@ public class GameDataManager
             if (datas.TryGetValue("PlayerDataProxy", out string pdp))
             {
                 playerData.Init(pdp);
-            }            
+            }
             if (datas.TryGetValue("TimerDataProxy", out string tm))
             {
                 timerData.Init(tm);
@@ -81,19 +86,19 @@ public class GameDataManager
                 sw.Close();
             }
         }
-        
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SaveData()

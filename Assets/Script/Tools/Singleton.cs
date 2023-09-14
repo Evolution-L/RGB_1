@@ -3,15 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-/*
- *	
- *  Singleton
- *
- *	by Xuanyi
- *
- */
-
-
 public static class Singleton<T> where T : class
 {
     /*	Instance	*/

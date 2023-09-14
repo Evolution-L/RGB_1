@@ -40,15 +40,16 @@ public class MainView : AnimateView
 
     public void Init()
     {
-        UpdateDate();
-        TimeManager.Instance.onMinuteChange += UpdateDate;
+        
         // gameDataManager = Singleton<GameDataManager>.Instance;
+        dateText.text = Singleton<TimerDataProxy>.Instance.GetMonthString() + "\n" + Singleton<TimerDataProxy>.Instance.GetTimeString();
+        yearText.text = Singleton<TimerDataProxy>.Instance.GetYearString();
 
         // OnPlayerHpChange();
         // OnPlayerMpChange();
 
         // EventManager.AddListener<int, int>(EventDefine.playerHpChange, OnPlayerHpChange);
-        // EventManager.AddListener<int, int>(EventDefine.playerMpChange, OnPlayerMpChange);
+        EventManager.Register<DateChangeEventArgs>(UpdateDate);
     }
 
     // Update is called once per frame
@@ -57,10 +58,10 @@ public class MainView : AnimateView
         
     }
 
-    public void UpdateDate()
+    public void UpdateDate(DateChangeEventArgs dateChangeEventArgs)
     {
-        dateText.text = TimeManager.Instance.GetMonthString() + "\n" + TimeManager.Instance.GetTimeString();
-        yearText.text = TimeManager.Instance.GetYearString();
+        dateText.text = Singleton<TimerDataProxy>.Instance.GetMonthString() + "\n" + Singleton<TimerDataProxy>.Instance.GetTimeString();
+        yearText.text = Singleton<TimerDataProxy>.Instance.GetYearString();
         // seasonText.text = EnvironmentManager.Instance.GetSeasonString();
     }
 

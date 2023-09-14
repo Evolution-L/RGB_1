@@ -2,7 +2,8 @@
     "name": "DataManager",
     "rootNamespace": "",
     "references": [
-        "GUID:a41867895dc6d2648ba905d12b65bcd9"
+        "GUID:a41867895dc6d2648ba905d12b65bcd9",
+        "GUID:74cd7589a19bb9240bf2c3acad7569d8"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
