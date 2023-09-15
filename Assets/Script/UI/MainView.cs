@@ -7,14 +7,7 @@ using System;
 using MoleMole;
 
 public class MainViewContext : BaseContext
-{
-    public string curSeason;
-    public string curHp;
-    public string curMp;
-    public string MaxHp;
-    public string MaxMp;
-
-    
+{   
     public MainViewContext() : base(UIType.MainView)
     {
     }
@@ -22,23 +15,26 @@ public class MainViewContext : BaseContext
 
 public class MainView : AnimateView
 {
-    public Text dateText;
-    public Text yearText;
-    public Text seasonText;
-    public Button bagBtn;
+    private Text dateText;
+    private Text yearText;
+    private Text seasonText;
+    private Button bagBtn;
 
-    public Image hp;
-    public Image mp;
-    public Text hpValue;
-    public Text mpValue;
+    private Image hp;
+    private Image mp;
+    private Text hpValue;
+    private Text mpValue;
+    private Button saveButton;
 
-    // Start is called before the first frame update
-    void Start()
-    {   
+    
+    public override void Initialize(BaseContext context)
+    {
+        BindUI();
         Init();
     }
+    
 
-    public void Init()
+    private void Init()
     {
         
         // gameDataManager = Singleton<GameDataManager>.Instance;
@@ -52,13 +48,27 @@ public class MainView : AnimateView
         EventManager.Register<DateChangeEventArgs>(UpdateDate);
     }
 
+    private void BindUI()
+    {
+        dateText = GetComponent<Text>("date/date/text");
+        yearText = GetComponent<Text>("date/season/text2");
+        seasonText = GetComponent<Text>("date/season/text");
+        
+        hp = GetComponent<Image>("statusBar/hp/hp");
+        mp = GetComponent<Image>("statusBar/mp/mp");
+        hpValue = GetComponent<Text>("statusBar/hp/value");
+        mpValue = GetComponent<Text>("statusBar/mp/value");
+
+        saveButton = GetComponent<Button>("SaveGame");
+    }
+
     // Update is called once per frame
     void Update()
     {
         
     }
 
-    public void UpdateDate(DateChangeEventArgs dateChangeEventArgs)
+    private void UpdateDate(DateChangeEventArgs dateChangeEventArgs)
     {
         dateText.text = Singleton<TimerDataProxy>.Instance.GetMonthString() + "\n" + Singleton<TimerDataProxy>.Instance.GetTimeString();
         yearText.text = Singleton<TimerDataProxy>.Instance.GetYearString();
@@ -75,12 +85,10 @@ public class MainView : AnimateView
         mpValue.text = value.ToString();
         mp.fillAmount = (float)value / maxVlaue;
     }
-
-
-    public void Dispose()
-    {
-        // EventManager.RemoveListener<int, int>(EventDefine.playerHpChange, OnPlayerHpChange);
+    protected override void OnDestroy() {
+                // EventManager.RemoveListener<int, int>(EventDefine.playerHpChange, OnPlayerHpChange);
         // EventManager.RemoveListener<int, int>(EventDefine.playerMpChange, OnPlayerMpChange);
         EventManager.UnRegister<DateChangeEventArgs>(UpdateDate);
     }
+
 }

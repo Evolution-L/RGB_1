@@ -33,6 +33,7 @@ namespace MoleMole
 
             _contextStack.Push(nextContext);
             BaseView nextView = Singleton<UIManager>.Instance.GetSingleUI(nextContext.ViewType).GetComponent<BaseView>();
+            nextView.Initialize(nextContext);
             nextView.OnEnter(nextContext);
         }
 

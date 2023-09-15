@@ -11,11 +11,17 @@ public class LoginViewContext : BaseContext
 
 public class LoginView : BaseView
 {
-    public GameObject bg1;
-    public GameObject bg2;
+    private GameObject bg1;
+    private GameObject bg2;
 
     GameStartEventArgs gameStartEventArgs;
     LoadGameEventArgs loadGameEventArgs;
+
+    public override void Initialize(BaseContext context)
+    {
+        bg1 = GetComponent<GameObject>("Bg1");
+        bg2 = GetComponent<GameObject>("Bg2");
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -43,13 +49,14 @@ public class LoginView : BaseView
         if (!string.IsNullOrEmpty(fileName))
         {
             gameStartEventArgs.saveFileName = fileName;
-            EventManager.Dispatch(gameStartEventArgs);
             Singleton<ContextManager>.Instance.Pop();
-            Singleton<ContextManager>.Instance.Push(new MainViewContext());
+            EventManager.Dispatch(gameStartEventArgs);
+            // Singleton<ContextManager>.Instance.Push(new MainViewContext());
         }
         else
         {
-            Debug.Log("暂时没有新建功能");
+            // Debug.Log("暂时没有新建功能");
+            CreateSaveFile("Save_1");
         }
 
     }
@@ -60,9 +67,9 @@ public class LoginView : BaseView
         if (!string.IsNullOrEmpty(fileName))
         {
             gameStartEventArgs.saveFileName = fileName;
-            EventManager.Dispatch(gameStartEventArgs);
             Singleton<ContextManager>.Instance.Pop();
-            Singleton<ContextManager>.Instance.Push(new MainViewContext());
+            EventManager.Dispatch(gameStartEventArgs);
+            // Singleton<ContextManager>.Instance.Push(new MainViewContext());
         }
         else
         {
@@ -76,14 +83,19 @@ public class LoginView : BaseView
         if (!string.IsNullOrEmpty(fileName))
         {
             gameStartEventArgs.saveFileName = fileName;
-            EventManager.Dispatch(gameStartEventArgs);
             Singleton<ContextManager>.Instance.Pop();
-            Singleton<ContextManager>.Instance.Push(new MainViewContext());
+            EventManager.Dispatch(gameStartEventArgs);
+            // Singleton<ContextManager>.Instance.Push(new MainViewContext());
         }
         else
         {
             Debug.Log("暂时没有新建功能");
         }
+    }
+
+    public void CreateSaveFile(string name)
+    {
+        Singleton<GameDataManager>.Instance.CreateSaveFiles(name);
     }
 
     

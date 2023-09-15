@@ -11,30 +11,38 @@ public class GameDataManager
     public PlayerDataProxy playerData;
     public TimerDataProxy timerData;
     public string fileName = "";
-    public string directoryPath = "";
     public string filePath = "";
 
-    public readonly string[] saveFileNames;
+    public string[] saveFileNames;
+    public static string directoryPath = Path.Combine(Application.persistentDataPath, "save");
 
     public GameDataManager()
     {
-        directoryPath = Path.Combine(Application.persistentDataPath, "save");
 
-        DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
-        FileInfo[] files = directoryInfo.GetFiles();
-
-        saveFileNames = new string[3];
-        for (int i = 0; i < 3; i++)
+        if (Directory.Exists(directoryPath))
         {
-            if (i < files.Length)
+            DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
+            FileInfo[] files = directoryInfo.GetFiles();
+
+            saveFileNames = new string[3];
+            for (int i = 0; i < 3; i++)
             {
-                saveFileNames[i] = files[i].Name;
-            }
-            else
-            {
-                saveFileNames[i] = "";
+                if (i < files.Length)
+                {
+                    saveFileNames[i] = files[i].Name;
+                }
+                else
+                {
+                    saveFileNames[i] = "";
+                }
             }
         }
+        else
+        {
+            Directory.CreateDirectory(directoryPath);
+            saveFileNames = new string[3] { "", "", "" };
+        }
+
     }
 
     public void LoadGameArchive(string saveFileName)
@@ -45,7 +53,7 @@ public class GameDataManager
         playerData = Singleton<PlayerDataProxy>.Instance;
         bagData = Singleton<BagDataProxy>.Instance;
         timerData = Singleton<TimerDataProxy>.Instance;
-        
+
         this.fileName = saveFileName;
         directoryPath = Path.Combine(Application.persistentDataPath, "save");
         filePath = Path.Combine(directoryPath, saveFileName + ".json");
@@ -123,6 +131,27 @@ public class GameDataManager
             { "PlayerDataProxy" , playerData.GetDataJson()},
             { "TimerDataProxy" , timerData.GetDataJson()},
         };
+    }
+
+    public void CreateSaveFiles(string name)
+    {
+        File.Create(Path.Combine(directoryPath, name + ".json"));
+
+        DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
+        FileInfo[] files = directoryInfo.GetFiles();
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (i < files.Length)
+            {
+                saveFileNames[i] = files[i].Name;
+            }
+            else
+            {
+                saveFileNames[i] = "";
+            }
+        }
+
     }
 
 }

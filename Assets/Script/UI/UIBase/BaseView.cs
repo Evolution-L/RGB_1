@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 /*
  *	
@@ -12,8 +13,12 @@ using System.Collections.Generic;
 
 namespace MoleMole
 {
-	public abstract class BaseView : MonoBehaviour
+    public abstract class BaseView:MonoBehaviour
     {
+        // public GameObject gameObject;
+        // public Transform transform;
+
+        public abstract void Initialize(BaseContext context);
 
         public virtual void OnEnter(BaseContext context)
         {
@@ -22,7 +27,7 @@ namespace MoleMole
 
         public virtual void OnExit(BaseContext context)
         {
-            
+
         }
 
         public virtual void OnPause(BaseContext context)
@@ -35,9 +40,27 @@ namespace MoleMole
 
         }
 
+        protected T GetComponent<T>(string path)
+        {
+            if (transform.Find(path).TryGetComponent<T>(out T component))
+            {
+                return component;
+            }
+            else
+            {
+                Debug.Log("获取组件失败");
+                return default;
+            }
+        }
+
         public void DestroySelf()
         {
-            Destroy(gameObject);
+            OnDestroy();
+            GameObject.Destroy(gameObject);
         }
-	}
+
+        protected virtual void OnDestroy(){
+
+        }
+    }
 }

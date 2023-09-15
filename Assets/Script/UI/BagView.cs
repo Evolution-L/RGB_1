@@ -7,5 +7,8 @@ using UnityEngine;
 
 public class BagView : AnimateView
 {
-   
+    public override void Initialize(BaseContext context)
+    {
+        throw new System.NotImplementedException();
+    }
 }

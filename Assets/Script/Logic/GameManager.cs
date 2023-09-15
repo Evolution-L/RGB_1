@@ -50,9 +50,10 @@ public class GameManager : MonoSingleton<GameManager>
     public void InitGame(GameStartEventArgs gameStartEventArgs)
     {
         Debug.Log(TimeManager.Instance.ToString());
-        
         Singleton<GameDataManager>.Instance.LoadGameArchive(gameStartEventArgs.saveFileName);
+
         InitScene();
+        Singleton<ContextManager>.Instance.Push(new MainViewContext());
         TimeManager.Instance.isStart = true;
     }
 
@@ -74,7 +75,7 @@ public class GameManager : MonoSingleton<GameManager>
         Singleton<GameDataManager>.Instance.SaveData();
     }
 
-    public void Destroy()
+    public void OnDestroy()
     {
         EventManager.Register<GameStartEventArgs>(InitGame);
     }
