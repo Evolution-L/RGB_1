@@ -19,8 +19,8 @@ public class LoginView : BaseView
 
     public override void Initialize(BaseContext context)
     {
-        bg1 = GetComponent<GameObject>("Bg1");
-        bg2 = GetComponent<GameObject>("Bg2");
+        bg1 = GetGameObject("Bg1");
+        bg2 = GetGameObject("Bg2");
     }
 
     // Start is called before the first frame update

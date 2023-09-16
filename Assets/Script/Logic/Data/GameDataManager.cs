@@ -29,7 +29,7 @@ public class GameDataManager
             {
                 if (i < files.Length)
                 {
-                    saveFileNames[i] = files[i].Name;
+                    saveFileNames[i] = Path.GetFileNameWithoutExtension(files[i].Name);
                 }
                 else
                 {
@@ -67,17 +67,20 @@ public class GameDataManager
             }
             Dictionary<string, string> datas;
             datas = JsonMapper.ToObject<Dictionary<string, string>>(readData);
-            if (datas.TryGetValue("BagDataProxy", out string dataJson))
+            if (datas != null)
             {
-                bagData.Init(dataJson);
-            }
-            if (datas.TryGetValue("PlayerDataProxy", out string pdp))
-            {
-                playerData.Init(pdp);
-            }
-            if (datas.TryGetValue("TimerDataProxy", out string tm))
-            {
-                timerData.Init(tm);
+                if (datas.TryGetValue("BagDataProxy", out string dataJson))
+                {
+                    bagData.Init(dataJson);
+                }
+                if (datas.TryGetValue("PlayerDataProxy", out string pdp))
+                {
+                    playerData.Init(pdp);
+                }
+                if (datas.TryGetValue("TimerDataProxy", out string tm))
+                {
+                    timerData.Init(tm);
+                }
             }
         }
         else
@@ -135,8 +138,9 @@ public class GameDataManager
 
     public void CreateSaveFiles(string name)
     {
-        File.Create(Path.Combine(directoryPath, name + ".json"));
-
+        Debug.Log(Path.Combine(directoryPath, name + ".json"));
+        var file = File.Create(Path.Combine(directoryPath, name + ".json"));
+        file.Close();
         DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
         FileInfo[] files = directoryInfo.GetFiles();
 
@@ -144,7 +148,7 @@ public class GameDataManager
         {
             if (i < files.Length)
             {
-                saveFileNames[i] = files[i].Name;
+                saveFileNames[i] = Path.GetFileNameWithoutExtension(files[i].Name);
             }
             else
             {

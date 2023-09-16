@@ -14,3 +14,5 @@ Assembly-CSharp-Editor.csproj
 RGB_1.sln
 spine-unity-editor.csproj
 Build/
+output-s/
+HybridCLRData/

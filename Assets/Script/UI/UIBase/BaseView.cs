@@ -42,14 +42,32 @@ namespace MoleMole
 
         protected T GetComponent<T>(string path)
         {
-            if (transform.Find(path).TryGetComponent<T>(out T component))
+        //     if (typeof(GameObject).IsAssignableFrom(typeof(T)))
+        //     {
+        //         return transform.Find(path).gameObject as T;
+        //     }
+            if (transform.Find(path).gameObject.TryGetComponent(out T component))
             {
                 return component;
             }
             else
             {
-                Debug.Log("获取组件失败");
+                Debug.LogError("获取组件失败");
                 return default;
+            }
+        }
+
+        protected GameObject GetGameObject(string path)
+        {
+            Transform ts = transform.Find(path);
+            if (ts)
+            {
+                return ts.gameObject;
+            }
+            else
+            {
+                Debug.LogError("获取GameObject失败");
+                return null;
             }
         }
 

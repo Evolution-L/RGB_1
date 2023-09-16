@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e189374413a3f00468e49d51d8b27a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enable: 1
+  useGlobalIl2cpp: 0
+  hybridclrRepoURL: https://gitee.com/focus-creative-games/hybridclr
+  il2cppPlusRepoURL: https://gitee.com/focus-creative-games/il2cpp_plus
+  hotUpdateAssemblyDefinitions:
+  - {fileID: 5897886265953266890, guid: 7e038919eb8a12c40b4b9ba7a44ff904, type: 3}
+  - {fileID: 5897886265953266890, guid: a41867895dc6d2648ba905d12b65bcd9, type: 3}
+  - {fileID: 5897886265953266890, guid: 74cd7589a19bb9240bf2c3acad7569d8, type: 3}
+  - {fileID: 5897886265953266890, guid: 6f926c13aea4a214abce787ef9109e8a, type: 3}
+  - {fileID: 5897886265953266890, guid: a7597da2caa786a43820efec0e045f51, type: 3}
+  - {fileID: 5897886265953266890, guid: a0516e2e7887bc24e8927291a6345ef3, type: 3}
+  - {fileID: 5897886265953266890, guid: d6ee5c58d99efc94f8f1c2e1a561aba0, type: 3}
+  - {fileID: 5897886265953266890, guid: 578adad0d44e55145bfe32bc169d03c1, type: 3}
+  hotUpdateAssemblies: []
+  preserveHotUpdateAssemblies: []
+  hotUpdateDllCompileOutputRootDir: HybridCLRData/HotUpdateDlls
+  externalHotUpdateAssembliyDirs: []
+  strippedAOTDllOutputRootDir: HybridCLRData/AssembliesPostIl2CppStrip
+  patchAOTAssemblies: []
+  outputLinkFile: HybridCLRGenerate/link.xml
+  outputAOTGenericReferenceFile: HybridCLRGenerate/AOTGenericReferences.cs
+  maxGenericReferenceIteration: 10
+  maxMethodBridgeGenericIteration: 10

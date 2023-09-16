@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.code-philosophy.hybridclr": {
+      "version": "https://gitee.com/focus-creative-games/hybridclr_unity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "06a250b9fa0cc9a32782a528e0d297bd4ba3846e"
+    },
     "com.esotericsoftware.spine.timeline": {
       "version": "file:C:/Users/Win10/Downloads/com.esotericsoftware.spine.timeline-4.1-2023-07-20/com.esotericsoftware.spine.timeline-4.1",
       "depth": 0,
