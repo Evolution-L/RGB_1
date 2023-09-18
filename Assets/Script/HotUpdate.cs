@@ -11,18 +11,18 @@ public class HotUpdate : MonoBehaviour
 {
     private static bool gameInit = false;
     private static Dictionary<string, byte[]> s_assetDatas = new Dictionary<string, byte[]>();
-    private static List<Assembly> assemblies = new();
+    private static Dictionary<string, Assembly> assemblies = new();
 
     private static List<string> assemblyFiles { get; } = new List<string>()
     {
-        "Config.dll.bytes",
-        "CustomEvent.dll.bytes",
-        "Tools.dll.bytes",
-        "DataManager.dll.bytes",
-        "Role.dll.bytes",
-        "Factory.dll.bytes",
-        "CustomUI.dll.bytes",
-        "Logic.dll.bytes",
+        "Config",
+        "CustomEvent",
+        "Tools",
+        "DataManager",
+        "Role",
+        "Factory",
+        "CustomUI",
+        "Logic",
     };
 
     void Start()
@@ -39,16 +39,20 @@ public class HotUpdate : MonoBehaviour
         // 开始游戏前先加载dll  暂时没理解为AOT补充元数据和泛型相关的问题, 所以暂时忽略对其的处理
         foreach (var item in assemblyFiles)
         {
-            var assPath = Path.Combine(AppConst.hotSavePath, item);
+
+            var assPath = Path.Combine(AppConst.hotSavePath, item + ".dll.bytes");
             Assembly ass = Assembly.LoadFrom(assPath);
             Debug.Log($"Load: {assPath}");
-            assemblies.Add(ass);
+            assemblies.Add(item, ass);
         }
+
+        
 
         Debug.Log("热更处理完成, 加载预制体启动游戏逻辑");
         gameInit = true;
-        GameObject.Instantiate(Resources.Load("GameManager") as GameObject);
-
+        // GameObject.Instantiate(Resources.Load("GameManager") as GameObject);
+        AssetBundle assetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/test");
+        Instantiate(assetBundle.LoadAsset<GameObject>("GameManager.prefab"));
 
     }
 
@@ -62,7 +66,7 @@ public class HotUpdate : MonoBehaviour
         // 遍历获取需要下载的资源
         foreach (var asset in assets)
         {
-            string dllPath = GetWebRequestPath(asset);
+            string dllPath = GetWebRequestPath(asset + ".dll.bytes");
             Debug.Log($"start download asset:{dllPath}");
             UnityWebRequest www = UnityWebRequest.Get(dllPath);
             yield return www.SendWebRequest();
@@ -85,7 +89,7 @@ public class HotUpdate : MonoBehaviour
                 s_assetDatas[asset] = assetData;
 
                 var savePath = Path.Combine(AppConst.hotSavePath, asset);
-
+                
                 File.WriteAllBytes(savePath, assetData);
             }
         }
