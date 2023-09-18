@@ -52,8 +52,17 @@ public class HotUpdate : MonoBehaviour
         gameInit = true;
         // GameObject.Instantiate(Resources.Load("GameManager") as GameObject);
         AssetBundle assetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/test");
-        Instantiate(assetBundle.LoadAsset<GameObject>("GameManager.prefab"));
-
+        var go = assetBundle.LoadAsset<GameObject>("GameManager.prefab");
+        if (!go)
+        {
+            Debug.Log("加载资源错误");
+            
+        }
+        else
+        {
+            Instantiate(go);
+        }
+        
     }
 
     //  IEnumerator DownLoadAssets(Action onDownloadComplete)

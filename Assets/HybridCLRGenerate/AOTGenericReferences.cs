@@ -6,6 +6,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	public static readonly IReadOnlyList<string> PatchedAOTAssemblyList = new List<string>
 	{
 		"LitJSON.dll",
+		"System.Core.dll",
+		"UnityEngine.AssetBundleModule.dll",
 		"UnityEngine.CoreModule.dll",
 		"mscorlib.dll",
 	};
@@ -139,6 +141,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.ObjectModel.ReadOnlyCollection<object>
 	// System.Comparison<int>
 	// System.Comparison<object>
+	// System.Func<object,byte>
 	// System.Predicate<int>
 	// System.Predicate<object>
 	// System.Runtime.CompilerServices.ConditionalWeakTable.CreateValueCallback<object,object>
@@ -149,9 +152,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	public void RefMethods()
 	{
 		// object LitJson.JsonMapper.ToObject<object>(string)
+		// object System.Linq.Enumerable.FirstOrDefault<object>(System.Collections.Generic.IEnumerable<object>,System.Func<object,bool>)
 		// object& System.Runtime.CompilerServices.Unsafe.As<object,object>(object&)
 		// System.Void* System.Runtime.CompilerServices.Unsafe.AsPointer<object>(object&)
 		// object System.Threading.Interlocked.CompareExchange<object>(object&,object,object)
+		// object UnityEngine.AssetBundle.LoadAsset<object>(string)
 		// object UnityEngine.Component.GetComponent<object>()
 		// object UnityEngine.GameObject.AddComponent<object>()
 		// object UnityEngine.GameObject.GetComponent<object>()
