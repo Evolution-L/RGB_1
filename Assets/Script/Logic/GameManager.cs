@@ -32,7 +32,7 @@ public class GameManager : MonoSingleton<GameManager>
         
 
         Singleton<GameDataManager>.Create();
-        gameRoot = GameObject.Instantiate(Resources.Load("GameRoot") as GameObject);
+        gameRoot = GameObject.Instantiate(AssetManager.LoadGameObject("GameRoot.prefab") as GameObject);
         DontDestroyOnLoad(gameRoot);
         EventManager.Register<GameStartEventArgs>(InitGame);
 

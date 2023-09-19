@@ -27,4 +27,9 @@ public static class Tools
         return pos;
     }
 
+    public static void PrintLog()
+    {
+        Debug.Log("程序集加载成功!!!!");
+    }
+
 }

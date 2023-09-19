@@ -29,7 +29,7 @@ namespace MoleMole
             return string.Format("path : {0} name : {1}", Path, Name);
         }
 
-        public static readonly UIType MainView = new UIType("ui/Main");
-        public static readonly UIType LoginView = new UIType("ui/Login");
+        public static readonly UIType MainView = new UIType("Main.prefab");
+        public static readonly UIType LoginView = new UIType("Login.prefab");
     }
 }

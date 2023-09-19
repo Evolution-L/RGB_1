@@ -162,6 +162,5 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object UnityEngine.GameObject.GetComponent<object>()
 		// bool UnityEngine.GameObject.TryGetComponent<object>(object&)
 		// object UnityEngine.Object.Instantiate<object>(object)
-		// object UnityEngine.Resources.Load<object>(string)
 	}
 }

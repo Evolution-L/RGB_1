@@ -31,7 +31,7 @@ namespace MoleMole
         {
             if (_UIDict.ContainsKey(uiType) == false || _UIDict[uiType] == null)
             {
-                GameObject go = GameObject.Instantiate(Resources.Load<GameObject>(uiType.Path)) as GameObject;
+                GameObject go = GameObject.Instantiate(AssetManager.LoadGameObject(uiType.Path)) as GameObject;
                 go.transform.SetParent(_canvas, false);
                 go.name = uiType.Name;
                 _UIDict.AddOrReplace(uiType, go);

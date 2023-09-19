@@ -25,7 +25,7 @@ public class AssetManager
     public static GameObject LoadGameObject(string fileName)
     {
         string path = "prefab";
-        // GameObject go = Resources.Load<GameObject>(path + "/" + fileName);
+        // GameObject go = AssetManager.LoadGameObject(path + "/" + fileName);
         GameObject go = Singleton<AssetManager>.Instance.assetBundle.LoadAsset<GameObject>(fileName);
         if (go)
         {
@@ -37,7 +37,7 @@ public class AssetManager
     public static GameObject LoadUIPrefab(string fileName)
     {
         string path = "ui_prefab";
-        // GameObject go = Resources.Load<GameObject>(path + "/" + fileName);
+        // GameObject go = AssetManager.LoadGameObject(path + "/" + fileName);
         GameObject go = Singleton<AssetManager>.Instance.assetBundle.LoadAsset<GameObject>(fileName);
         if (go)
         {
@@ -49,7 +49,7 @@ public class AssetManager
     public static GameObject LoadCamera(string fileName)
     {
         string path = "camera";
-        // GameObject go = Resources.Load<GameObject>(path + "/" + fileName);
+        // GameObject go = AssetManager.LoadGameObject(path + "/" + fileName);
         GameObject go = Singleton<AssetManager>.Instance.assetBundle.LoadAsset<GameObject>(fileName);
         if (go)
         {

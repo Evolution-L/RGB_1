@@ -61,6 +61,7 @@ public class GenAB : EditorWindow
         Debug.LogError("target ios");
 #elif UNITY_STANDALONE_OSX
         BuildTarget_ = BuildTarget.StandaloneOSX;
+        Debug.LogError("target StandaloneOSX");
 #elif UNITY_STANDALONE_WIN
         BuildTarget_ = BuildTarget.StandaloneWindows64;
         Debug.LogError("target windows");
@@ -70,7 +71,7 @@ public class GenAB : EditorWindow
 
     private void SetABName()
     {
-        string rootPath = @"Assets/Resources/";
+        string rootPath = @"Assets/ResourcesHot/";
         string[] files = Directory.GetDirectories(rootPath);
         string[] files2 = Directory.GetFiles(rootPath);
  

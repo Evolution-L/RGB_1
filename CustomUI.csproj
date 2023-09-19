@@ -377,30 +377,6 @@
     <Reference Include="dnlib">
       <HintPath>Library\PackageCache\com.code-philosophy.hybridclr@06a250b9fa\Plugins\dnlib.dll</HintPath>
     </Reference>
-    <Reference Include="Tools">
-      <HintPath>Assets\DLLs\Tools.dll</HintPath>
-    </Reference>
-    <Reference Include="CustomUI">
-      <HintPath>Assets\DLLs\CustomUI.dll</HintPath>
-    </Reference>
-    <Reference Include="Role">
-      <HintPath>Assets\DLLs\Role.dll</HintPath>
-    </Reference>
-    <Reference Include="DataManager">
-      <HintPath>Assets\DLLs\DataManager.dll</HintPath>
-    </Reference>
-    <Reference Include="Config">
-      <HintPath>Assets\DLLs\Config.dll</HintPath>
-    </Reference>
-    <Reference Include="Logic">
-      <HintPath>Assets\DLLs\Logic.dll</HintPath>
-    </Reference>
-    <Reference Include="CustomEvent">
-      <HintPath>Assets\DLLs\CustomEvent.dll</HintPath>
-    </Reference>
-    <Reference Include="Factory">
-      <HintPath>Assets\DLLs\Factory.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.16f1c1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
@@ -788,11 +764,11 @@
     <Reference Include="System.Xml.XPath.XDocument">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.16f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
