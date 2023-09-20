@@ -62,7 +62,6 @@
     <Compile Include="Assets\Script\Logic\GameManager.cs" />
     <Compile Include="Assets\Script\Logic\GameInputManager.cs" />
     <Compile Include="Assets\Script\Logic\EnvironmentManager.cs" />
-    <Compile Include="Assets\Script\Logic\LoadDLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Script\Logic\Logic.asmdef" />

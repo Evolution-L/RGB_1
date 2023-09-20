@@ -42,7 +42,6 @@ public class GameDataManager
             Directory.CreateDirectory(directoryPath);
             saveFileNames = new string[3] { "", "", "" };
         }
-
     }
 
     public void LoadGameArchive(string saveFileName)
