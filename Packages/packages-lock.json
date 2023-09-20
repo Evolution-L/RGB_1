@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "06a250b9fa0cc9a32782a528e0d297bd4ba3846e"
     },
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "64f7eec4e9e451b07ba0c56a152efaca88b6be17"
+    },
     "com.esotericsoftware.spine.timeline": {
       "version": "file:C:/Users/Win10/Downloads/com.esotericsoftware.spine.timeline-4.1-2023-07-20/com.esotericsoftware.spine.timeline-4.1",
       "depth": 0,
