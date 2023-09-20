@@ -7,7 +7,7 @@ namespace CustomEvent
 {
     public interface IEventArgs
     {
-        string argsType { get => "args"; }
+        // public string EventType { get => "args"; }
     }
 
     public class GameStartEventArgs :IEventArgs
