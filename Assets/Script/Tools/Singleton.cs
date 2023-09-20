@@ -30,6 +30,10 @@ public static class Singleton<T> where T : class
     {
         get
         {
+            if (_instance == null)
+            {
+                Create();
+            }
             return _instance;
         }
     }

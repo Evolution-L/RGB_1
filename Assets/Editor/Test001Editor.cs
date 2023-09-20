@@ -1,72 +1,72 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEditor;
+// using UnityEngine;
 
-[CustomEditor(typeof(Test001))]
-public class Test001Editor : Editor
-{
-    public override void OnInspectorGUI()
-    {
+// [CustomEditor(typeof(Test001))]
+// public class Test001Editor : Editor
+// {
+//     public override void OnInspectorGUI()
+//     {
 
-        DrawDefaultInspector();
-
-
-
-        Test001 myScript = (Test001)target;
-
-        if (GUILayout.Button("InitGame"))
-        {
-
-            myScript.test1();
-
-        }
-        if (GUILayout.Button("EndGame"))
-        {
-
-            myScript.test2();
-
-        }        
-        if (GUILayout.Button("²âÊÔ°´Å¥"))
-        {
-
-            myScript.test3();
-
-        }        
-        if (GUILayout.Button("Éú³ÉÖ²Îï"))
-        {
-
-            myScript.test4();
-
-        }
-
-    }
-}
-
-[CustomEditor(typeof(Test002))]
-public class Test002Editor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-
-        DrawDefaultInspector();
+//         DrawDefaultInspector();
 
 
 
-        Test002 myScript = (Test002)target;
+//         Test001 myScript = (Test001)target;
 
-        if (GUILayout.Button("²âÊÔ°´Å¥"))
-        {
+//         if (GUILayout.Button("InitGame"))
+//         {
 
-            myScript.test1();
+//             myScript.test1();
 
-        }        
-        if (GUILayout.Button("²âÊÔ°´Å¥"))
-        {
+//         }
+//         if (GUILayout.Button("EndGame"))
+//         {
 
-            myScript.test2();
+//             myScript.test2();
 
-        }
+//         }        
+//         if (GUILayout.Button("ï¿½ï¿½ï¿½Ô°ï¿½Å¥"))
+//         {
 
-    }
-}
+//             myScript.test3();
+
+//         }        
+//         if (GUILayout.Button("ï¿½ï¿½ï¿½ï¿½Ö²ï¿½ï¿½"))
+//         {
+
+//             myScript.test4();
+
+//         }
+
+//     }
+// }
+
+// [CustomEditor(typeof(Test002))]
+// public class Test002Editor : Editor
+// {
+//     public override void OnInspectorGUI()
+//     {
+
+//         DrawDefaultInspector();
+
+
+
+//         Test002 myScript = (Test002)target;
+
+//         if (GUILayout.Button("ï¿½ï¿½ï¿½Ô°ï¿½Å¥"))
+//         {
+
+//             myScript.test1();
+
+//         }        
+//         if (GUILayout.Button("ï¿½ï¿½ï¿½Ô°ï¿½Å¥"))
+//         {
+
+//             myScript.test2();
+
+//         }
+
+//     }
+// }

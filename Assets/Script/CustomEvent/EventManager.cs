@@ -38,10 +38,10 @@ namespace CustomEvent
     {
         private static readonly Dictionary<Type, IEventEntity> eventEntitys = new();
 
-        public static void Dispatch(IEventArgs eventArges)
+        public static void Dispatch<T>(T eventArges) where T : IEventArgs
         {
-            // var eventType = typeof(T);
-            var eventType = eventArges.GetType();
+            var eventType = typeof(T);
+            // var eventType = eventArges.GetType();
             if (eventEntitys.TryGetValue(eventType, out IEventEntity ieventEntity))
             {
                 ieventEntity.Dispatch(eventArges);
@@ -62,7 +62,6 @@ namespace CustomEvent
                 eventEntity.Register(action);
                 eventEntitys[eventType] = eventEntity;
             }
-
         }
 
         public static void UnRegister<T>(Action<T> action) where T : IEventArgs

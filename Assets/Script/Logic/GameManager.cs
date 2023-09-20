@@ -14,6 +14,7 @@ public class GameManager : MonoSingleton<GameManager>
     public GameObject gameRoot;
     private void Awake()
     {
+        Debug.Log(Application.persistentDataPath);
         OutPutCamera = GameObject.FindGameObjectWithTag("OutPutCamera");
         OutPutCamera = OutPutCamera == null ? AssetManager.LoadCamera("OutPutCamera") : OutPutCamera;
 
@@ -28,10 +29,11 @@ public class GameManager : MonoSingleton<GameManager>
         DontDestroyOnLoad(OutPutCamera);
         //DontDestroyOnLoad(sceneCamera);
         DontDestroyOnLoad(uiCamera);
-        DontDestroyOnLoad(gameRoot);
+        
 
         Singleton<GameDataManager>.Create();
-
+        gameRoot = GameObject.Instantiate(AssetManager.LoadGameObject("GameRoot.prefab") as GameObject);
+        DontDestroyOnLoad(gameRoot);
         EventManager.Register<GameStartEventArgs>(InitGame);
 
     }
