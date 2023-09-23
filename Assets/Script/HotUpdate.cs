@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using System.Reflection;
 using HybridCLR;
 using UnityEngine;
 using UnityEngine.Networking;
-using DynamicLoadDLL;
 
 public class HotUpdate : MonoBehaviour
 {
@@ -42,125 +42,41 @@ public class HotUpdate : MonoBehaviour
         if (!gameInit)
         {
             DontDestroyOnLoad(this.gameObject);
-            StartCoroutine(DownLoadAssets(this.StartGame));
+            if (Application.platform == RuntimePlatform.WindowsEditor)
+            {
+                StartGame();
+            }
+            else
+            {
+                StartCoroutine(DownLoadAssets(this.StartGame));
+
+            }
         }
     }
 
-    private void StartGame()
+    public void StartGame()
     {
-        LoadMetadataForAOTAssemblies();
-        // 开始游戏前先加载dll  暂时没理解为AOT补充元数据和泛型相关的问题, 所以暂时忽略对其的处理
-        Debug.Log("开始加载dll文件!!!!");
-        foreach (var item in assemblyFiles)
+        if (Application.platform != RuntimePlatform.WindowsEditor)
         {
-            var assPath = Path.Combine(AppConst.hotSavePath, item + ".bytes");
-
-
-            Assembly ass = null;
-            try
+            LoadMetadataForAOTAssemblies();
+            // 开始游戏前先加载dll  暂时没理解为AOT补充元数据和泛型相关的问题, 所以暂时忽略对其的处理
+            foreach (var item in assemblyFiles)
             {
-                try
-                {
-                    ass = Assembly.Load(File.ReadAllBytes(assPath)); 
-                    // ass = Assembly.LoadFrom(assPath);
-                    if (item == "Tools.dll")
-                    {
-                        Debug.Log("输出信息 PrintLog PrintLogv");
-                        ass.GetType("Tools").GetMethod("PrintLog").Invoke(null, null);
-                    }
-                }
-                catch (Exception ex)
-                {
+                var assPath = Path.Combine(AppConst.hotSavePath, item + ".bytes");
 
-                    Debug.LogError($"加载出问题Assembly.LoadFrom(assPath) : {ex}");
-                }
-                try
-                {
-                    assemblies.Add(item, ass);
-                }
-                catch (Exception ex)
-                {
-
-                    Debug.LogError($"字典出问题assemblies.Add(item, ass); : {ex}");
-                }
-                try
-                {
-                    Debug.Log($"Load: {assPath}");
-                    Debug.Log(ass.ToString());
-                }
-                catch (Exception ex)
-                {
-
-                    Debug.LogError($"打印出问题assemblies.Add(item, ass); : {ex}");
-                }
-
+                Assembly ass = Assembly.Load(File.ReadAllBytes(assPath));
+                assemblies.Add(item, ass);
+                Debug.Log($"Load: {assPath}");
             }
-            catch (Exception ex)
-            {
-                Debug.LogError($"Exception while loading assembly: {ex}");
-            }
-
-
-
-
-
-
-
-            if (assemblies[item] != null)
-            {
-                Debug.Log(assemblies[item].ToString());
-            }
-            else
-                Debug.Log("加载失败, 字典为空");
-
-
         }
-        Debug.Log("dll文件加载结束<><><><<><>");
-
-
 
         Debug.Log("热更处理完成, 加载预制体启动游戏逻辑");
         gameInit = true;
-        Debug.Log("测试程序集加载");
-        // try
-        // {
-        Debug.Log("ASDADADAS");
-        Assembly ass2 = assemblies["Tools.dll"];
-        // 输出程序集的名称
-        Debug.Log("Loaded assembly: " + ass2.FullName);
-        Type toolsType = ass2.GetType("Tools");
-        Debug.Log(toolsType.ToString());
-        ass2.GetType("Tools").GetMethod("PrintLog").Invoke(null, null);
-        // }
-        // catch (System.Exception)
-        // {
-
-        //     Debug.Log("ahishiuhau");
-        // }
-
 
         // GameObject.Instantiate(Resources.Load("GameManager") as GameObject);
         AssetBundle assetBundle = AssetBundle.LoadFromFile(Application.persistentDataPath + "/data/test");
-        var go = assetBundle.LoadAsset<GameObject>("Cube.prefab");
-        if (!go)
-        {
-            Debug.Log("加载资源错误");
-        }
-        else
-        {
-            Instantiate(go);
-        }
-
         var go2 = assetBundle.LoadAsset<GameObject>("GameManager.prefab");
-        if (!go2)
-        {
-            Debug.Log("加载资源错误");
-        }
-        else
-        {
-            Debug.Log("资源加载成功!" + go2.ToString());
-            Instantiate(go2);
-        }
+        Instantiate(go2);
 
     }
 

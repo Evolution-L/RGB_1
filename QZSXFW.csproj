@@ -8,10 +8,10 @@
     <Configurations>Debug;Release</Configurations>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>QZSXFrameWork</RootNamespace>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>DataManager</AssemblyName>
+    <AssemblyName>QZSXFW</AssemblyName>
     <TargetFramework>netstandard2.0</TargetFramework>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
@@ -53,14 +53,25 @@
     <Analyzer Include="C:\Users\Win10\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\Logic\Data\GameDataManager.cs" />
-    <Compile Include="Assets\Script\Logic\Data\Proxy\BagDataProxy.cs" />
-    <Compile Include="Assets\Script\Logic\Data\Proxy\PlayerDataProxy.cs" />
-    <Compile Include="Assets\Script\Logic\Data\Proxy\DataProxy.cs" />
-    <Compile Include="Assets\Script\Logic\Data\Proxy\TimerDataProxy.cs" />
+    <Compile Include="Assets\QZSXFW\Asset\AssetManager.cs" />
+    <Compile Include="Assets\QZSXFW\Tools\MonoSingleton.cs" />
+    <Compile Include="Assets\QZSXFW\Asset\AssetPathProcessor.cs" />
+    <Compile Include="Assets\QZSXFW\Asset\AssetInfo.cs" />
+    <Compile Include="Assets\QZSXFW\Asset\ConfResItem.cs" />
+    <Compile Include="Assets\QZSXFW\Asset\Asset.cs" />
+    <Compile Include="Assets\QZSXFW\DynamicLoadDLL\LoadDll.cs" />
+    <Compile Include="Assets\QZSXFW\DynamicLoadDLL\LoadClass.cs" />
+    <Compile Include="Assets\QZSXFW\Asset\AssetLoader.cs" />
+    <Compile Include="Assets\QZSXFW\Tools\Singleton.cs" />
+    <Compile Include="Assets\QZSXFW\Asset\Assist.cs" />
+    <Compile Include="Assets\QZSXFW\Security\Arithmetic.cs" />
+    <Compile Include="Assets\QZSXFW\Security\Bit.cs" />
+    <Compile Include="Assets\QZSXFW\Security\EncryptHelper.cs" />
+    <Compile Include="Assets\QZSXFW\Security\SeekableAesStream.cs" />
+    <Compile Include="Assets\QZSXFW\Tools\ListPool.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Script\Logic\Data\DataManager.asmdef" />
+    <None Include="Assets\QZSXFW\QZSXFW.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -767,7 +778,5 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="CustomEvent.csproj" />
-    <ProjectReference Include="Tools.csproj" />
   </ItemGroup>
 </Project>

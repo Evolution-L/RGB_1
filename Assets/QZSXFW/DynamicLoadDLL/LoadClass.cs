@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace DynamicLoadDLL
+namespace QZSXFrameWork.DynamicLoadDLL
 {
     /// <summary>
     /// 加载类
