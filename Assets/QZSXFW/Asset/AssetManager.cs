@@ -136,13 +136,15 @@ namespace QZSXFrameWork.Asset
         /// <param name="loadMulti">编辑器模式下的多资源加载</param>
         public AssetLoader LoadAssetAsync(string path, LoadAssetCompleteHandler handler = null, object param = null, bool loadMulti = false)
         {
-            string filePath = path.ToLower();
-            string wavAudioName = AssetPathProcessor.editorModeAssetPath;
+            // 想要支持大小写命名格式
+            // string filePath = path.ToLower();
+            string filePath = path;
+            string rootPath = AssetPathProcessor.editorModeAssetPath;
 
 #if UNITY_EDITOR && !AB_MODE
             filePath = AssetPathProcessor.GetAssetRelativePath(filePath) + AssetPathProcessor.GetAssetShortName(filePath);
-            wavAudioName = wavAudioName + filePath;
-            if (!File.Exists(wavAudioName))
+            rootPath = rootPath + filePath;
+            if (!File.Exists(rootPath))
             {
                 string shortname = filePath.Substring(0, filePath.LastIndexOf("."));
                 string suffix = filePath.Substring(filePath.LastIndexOf(".") + 1);
@@ -200,12 +202,14 @@ namespace QZSXFrameWork.Asset
         /// <returns></returns>
         public void LoadAssetSync(string path, LoadAssetCompleteHandler handler = null, bool loadMulti = false, object param = null)
         {
-            string filePath = path.ToLower();
-            string wavAudioName = AssetPathProcessor.editorModeAssetPath;
+            // 想要支持大小写命名格式
+            // string filePath = path.ToLower();
+            string filePath = path;
+            string rootPath = AssetPathProcessor.editorModeAssetPath;
 #if UNITY_EDITOR && !AB_MODE
             filePath = AssetPathProcessor.GetAssetRelativePath(filePath) + AssetPathProcessor.GetAssetShortName(filePath);
-            wavAudioName = wavAudioName + filePath;
-            if (!File.Exists(wavAudioName))
+            rootPath = rootPath + filePath;
+            if (!File.Exists(rootPath))
             {
                 string shortname = filePath.Substring(0, filePath.LastIndexOf("."));
                 string suffix = filePath.Substring(filePath.LastIndexOf(".") + 1);
@@ -316,7 +320,9 @@ namespace QZSXFrameWork.Asset
         public AssetLoader CreateLoader(string abFileName, object param, bool loadMulti = false, bool isAsync_ = true)
         {
             AssetLoader loader = null;
-            abFileName = abFileName.ToLower();
+            // 想要支持大小写命名格式
+            // abFileName = abFileName.ToLower();
+            // abFileName = abFileName;
 
             if (_loaderCache.ContainsKey(abFileName))
             {
@@ -377,8 +383,9 @@ namespace QZSXFrameWork.Asset
 
             if (abi == null)
                 abi = new AssetInfo();
-
-            abi.bundleName = loader.bundleName.ToLower();
+            // 想要支持大小写命名格式
+            // abi.bundleName = loader.bundleName.ToLower();
+            abi.bundleName = loader.bundleName;
             abi.bundle = assetBundle;
             abi.data = loader.bundleData;
             abi.bytes = bytes;
@@ -408,7 +415,9 @@ namespace QZSXFrameWork.Asset
         /// </summary>
         public AssetInfo GetBundleInfo(string key, bool useVagueFind = false)
         {
-            string filePath = key.ToLower();
+            // 想要支持大小写命名格式
+            // string filePath = key.ToLower();
+            string filePath = key;
 
 #if UNITY_EDITOR && !AB_MODE
             filePath = AssetPathProcessor.GetAssetRelativePath(filePath) + AssetPathProcessor.GetAssetShortName(filePath);

@@ -776,5 +776,6 @@
     <ProjectReference Include="Config.csproj" />
     <ProjectReference Include="Tools.csproj" />
     <ProjectReference Include="DataManager.csproj" />
+    <ProjectReference Include="QZSXFW.csproj" />
   </ItemGroup>
 </Project>

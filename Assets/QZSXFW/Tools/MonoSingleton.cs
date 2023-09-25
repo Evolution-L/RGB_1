@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace QZSXFrameWork.Tools
@@ -15,11 +13,11 @@ namespace QZSXFrameWork.Tools
                 if (instance == null)
                 {
                     GameObject go = GameObject.Find(typeof(T).Name);
-                    if (go == null)
-                    {
+                    // if (go == null)
+                    // {
                         
-                        // go = AssetManager.LoadUIPrefab(typeof(T).Name);
-                    }
+                    //     // go = AssetManager.LoadUIPrefab(typeof(T).Name);
+                    // }
                     if (go == null)
                     {
                         go = new GameObject(typeof(T).Name);

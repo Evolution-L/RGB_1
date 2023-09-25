@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace QZSXFrameWork.Asset
@@ -46,7 +44,9 @@ namespace QZSXFrameWork.Asset
             }
         }
 
-        public static string editorModeAssetPath = Application.dataPath + "/Resource/AssetBundles/";
+        public static string editorModeAssetPath = Application.dataPath + "/" + editorAssetPath;
+
+        public static string editorAssetPath = "Resource/";
 
         /// <summary>
         /// 资源信息文件路径
@@ -87,8 +87,10 @@ namespace QZSXFrameWork.Asset
         }
 
         public static string GetAssetPath(string fileName_)
-        {
-            return GetAssetRelativePath(fileName_) + fileName_.ToLower();
+        {   
+            // 想要支持大小写命名格式
+            // return GetAssetRelativePath(fileName_) + fileName_.ToLower();
+            return GetAssetRelativePath(fileName_) + fileName_;
         }
     }
 }

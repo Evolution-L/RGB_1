@@ -766,5 +766,6 @@
     <ProjectReference Include="Role.csproj" />
     <ProjectReference Include="Config.csproj" />
     <ProjectReference Include="Tools.csproj" />
+    <ProjectReference Include="QZSXFW.csproj" />
   </ItemGroup>
 </Project>

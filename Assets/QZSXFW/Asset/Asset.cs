@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -183,7 +182,8 @@ namespace QZSXFrameWork.Asset
                 return spriteCache[origPath];
             Dictionary<string, Sprite> tb = new();
 #if AB_MODE
-                    path = path.ToLower();
+                    // 想要支持大小写命名格式
+                    // path = path.ToLower();
                     //string bundleName = path.Split('.')[1];
                     Sprite[] sp = null;
                     Singleton<AssetManager>.Instance.LoadAssetSync(path, (o) =>

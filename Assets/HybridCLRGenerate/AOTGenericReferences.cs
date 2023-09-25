@@ -7,7 +7,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	{
 		"LitJSON.dll",
 		"System.Core.dll",
-		"UnityEngine.AssetBundleModule.dll",
 		"UnityEngine.CoreModule.dll",
 		"mscorlib.dll",
 	};
@@ -72,6 +71,9 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.EqualityComparer<float>
 	// System.Collections.Generic.EqualityComparer<int>
 	// System.Collections.Generic.EqualityComparer<object>
+	// System.Collections.Generic.HashSet.Enumerator<object>
+	// System.Collections.Generic.HashSet<object>
+	// System.Collections.Generic.HashSetEqualityComparer<object>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<int,AnimConfig>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<int,float>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,GrowableCfgItem>>
@@ -135,32 +137,36 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ObjectEqualityComparer<float>
 	// System.Collections.Generic.ObjectEqualityComparer<int>
 	// System.Collections.Generic.ObjectEqualityComparer<object>
+	// System.Collections.Generic.Queue.Enumerator<object>
+	// System.Collections.Generic.Queue<object>
 	// System.Collections.Generic.Stack.Enumerator<object>
 	// System.Collections.Generic.Stack<object>
 	// System.Collections.ObjectModel.ReadOnlyCollection<int>
 	// System.Collections.ObjectModel.ReadOnlyCollection<object>
 	// System.Comparison<int>
 	// System.Comparison<object>
-	// System.Func<object,byte>
+	// System.Func<object>
 	// System.Predicate<int>
 	// System.Predicate<object>
 	// System.Runtime.CompilerServices.ConditionalWeakTable.CreateValueCallback<object,object>
 	// System.Runtime.CompilerServices.ConditionalWeakTable.Enumerator<object,object>
 	// System.Runtime.CompilerServices.ConditionalWeakTable<object,object>
+	// UnityEngine.Pool.IObjectPool<object>
+	// UnityEngine.Pool.ObjectPool<object>
+	// UnityEngine.Pool.PooledObject<object>
 	// }}
 
 	public void RefMethods()
 	{
 		// object LitJson.JsonMapper.ToObject<object>(string)
-		// object System.Linq.Enumerable.FirstOrDefault<object>(System.Collections.Generic.IEnumerable<object>,System.Func<object,bool>)
 		// object& System.Runtime.CompilerServices.Unsafe.As<object,object>(object&)
 		// System.Void* System.Runtime.CompilerServices.Unsafe.AsPointer<object>(object&)
 		// object System.Threading.Interlocked.CompareExchange<object>(object&,object,object)
-		// object UnityEngine.AssetBundle.LoadAsset<object>(string)
 		// object UnityEngine.Component.GetComponent<object>()
 		// object UnityEngine.GameObject.AddComponent<object>()
 		// object UnityEngine.GameObject.GetComponent<object>()
 		// bool UnityEngine.GameObject.TryGetComponent<object>(object&)
 		// object UnityEngine.Object.Instantiate<object>(object)
+		// object UnityEngine.Object.Instantiate<object>(object,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
 	}
 }

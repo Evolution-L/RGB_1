@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using QZSXFrameWork.Asset;
 
 /*
  *	
@@ -31,7 +31,7 @@ namespace MoleMole
         {
             if (_UIDict.ContainsKey(uiType) == false || _UIDict[uiType] == null)
             {
-                GameObject go = GameObject.Instantiate(AssetManager.LoadGameObject(uiType.Path)) as GameObject;
+                GameObject go = Asset.GetInsObj($"ui/{uiType.Path}.prefab");
                 go.transform.SetParent(_canvas, false);
                 go.name = uiType.Name;
                 _UIDict.AddOrReplace(uiType, go);

@@ -12,6 +12,7 @@ namespace QZSXFrameWork.Asset
         public static string abEncryptString = "x(~dKGz.,#iWc.3[@7CQDXtq&Z!?;3LM";
         // 数据偏移值
         public static uint abOffset = 7;
+        
         // 加密列表
         public static List<string> encryptList = new List<string>
         {

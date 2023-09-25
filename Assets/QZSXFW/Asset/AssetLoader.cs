@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -456,7 +455,7 @@ namespace QZSXFrameWork.Asset
                 {
                     if (_mainObject == null)
                     {
-                        string newPath = string.Format("Assets/Resource/AssetBundles/{0}", bundleName);
+                        string newPath = $"Assets/{AssetPathProcessor.editorAssetPath}{bundleName}";
                         _mainObject = AssetDatabase.LoadMainAssetAtPath(newPath);
                         if (_mainObject == null)
                         {
@@ -479,7 +478,7 @@ namespace QZSXFrameWork.Asset
                 string filePath = bundleName.Replace(suffix, string.Empty);
                 filePath += "/" + assetName + suffix;
 
-                return AssetDatabase.LoadMainAssetAtPath(string.Format("Assets/Resource/AssetBundles/{0}", filePath));
+                return AssetDatabase.LoadMainAssetAtPath($"Assets/{AssetPathProcessor.editorAssetPath}{filePath}");
             }
         }
 
@@ -545,11 +544,6 @@ namespace QZSXFrameWork.Asset
                 else
                 {
                     abi = new ABInfo();
-                }
-
-                if (bundleName.Contains("/m_13601/head_equip"))
-                {
-                    int a = 0;
                 }
 
                 this.state = LoadState.State_Complete;

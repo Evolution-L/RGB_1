@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Asset = QZSXFrameWork.Asset.Asset;
 
 public interface IGrowableFactory
 {
@@ -13,7 +12,7 @@ public class GrowableFactory : IGrowableFactory
     {
         if (GrowableCfg.Instance.cfgs.TryGetValue(id, out GrowableCfgItem item))
         {
-            GameObject go = AssetManager.LoadGameObject(item.res);
+            GameObject go = Asset.GetInsObj($"growable/{item.res}.prefab");
             IGrowable growable = go.AddComponent<Growable>() as IGrowable;
 
             return growable;

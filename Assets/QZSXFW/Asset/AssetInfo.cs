@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -408,7 +407,9 @@ namespace QZSXFrameWork.Asset
             Object[] objs = bundle.LoadAllAssets();
             for (int i = 0; i < objs.Length; ++i)
             {
-                mainObjectsDic[objs[i].name.ToLower()] = objs[i];
+                // 想要支持大小写命名格式
+                // mainObjectsDic[objs[i].name.ToLower()] = objs[i];
+                mainObjectsDic[objs[i].name] = objs[i];
             }
 #endif
         }

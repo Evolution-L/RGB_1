@@ -1,4 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,15 +17,15 @@ public class HotUpdate : MonoBehaviour
 
     private static List<string> AOTMetaAssemblyFiles { get; } = new List<string>()
     {
-        "LitJSON.dll",
-        "System.Core.dll",
-        "UnityEngine.AssetBundleModule.dll",
-        "UnityEngine.CoreModule.dll",
-        "mscorlib.dll",
+		"LitJSON.dll",
+		"System.Core.dll",
+		"UnityEngine.CoreModule.dll",
+		"mscorlib.dll",
     };
 
     private static List<string> assemblyFiles { get; } = new List<string>()
     {
+        "QZSXFW.dll",
         "Config.dll",
         "CustomEvent.dll",
         "Tools.dll",
@@ -74,9 +73,13 @@ public class HotUpdate : MonoBehaviour
         gameInit = true;
 
         // GameObject.Instantiate(Resources.Load("GameManager") as GameObject);
-        AssetBundle assetBundle = AssetBundle.LoadFromFile(Application.persistentDataPath + "/data/test");
-        var go2 = assetBundle.LoadAsset<GameObject>("GameManager.prefab");
-        Instantiate(go2);
+        // GameObject go = new GameObject();
+        // Singleton<AssetManager>.Create(go.AddComponent<AssetManager>());
+        // go.name = "AssetManager";
+        // DontDestroyOnLoad(go);
+        // AssetBundle assetBundle = AssetBundle.LoadFromFile(Application.persistentDataPath + "/data/test");
+        var go = GameObject.Instantiate(Resources.Load("GameManager") as GameObject);
+        
 
     }
 

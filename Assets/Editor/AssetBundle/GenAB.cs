@@ -1,10 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using System;
 using System.IO;
-using System.Linq;
 
 public class GenAB : EditorWindow
 {
@@ -13,6 +10,7 @@ public class GenAB : EditorWindow
     private string assetPath = "";
 
     private static BuildTarget BuildTarget_;
+    private static string Variant_ = "";
 
     [MenuItem("AssetBundle相关/GenAB")]
     private static void Init()
@@ -71,17 +69,16 @@ public class GenAB : EditorWindow
 
     private void SetABName()
     {
-        string rootPath = @"Assets/ResourcesHot/";
+        string rootPath = @"Assets/Resource/";
         string[] files = Directory.GetDirectories(rootPath);
         string[] files2 = Directory.GetFiles(rootPath);
- 
-        //  foreach (var item in files2)
-        //  {
-        //     if (!item.Contains(".meta"))
-        //     {
-        //         Debug.Log(item);
-        //     }
-        //  }
+        // 设置AB包名
+        for (int i = 0; i < files.Length; i++)
+        {
+            files[i] = files[i].Replace("\\", "/");
+            Variant_ = files[i].Substring(files[i].LastIndexOf("/") + 1);
+            // SetDirectoryName(Variant_, files[i]);
+        }
 
         List<string> allFiles = GetAllFiles(rootPath);
         foreach (var item in allFiles)
@@ -97,7 +94,7 @@ public class GenAB : EditorWindow
     private List<string> GetAllFiles(string path)
     {
         List<string> allFiles = new();
-        string[] files1 =  Directory.GetFiles(path);
+        string[] files1 = Directory.GetFiles(path);
         foreach (var item in files1)
         {
             if (!item.Contains(".meta"))

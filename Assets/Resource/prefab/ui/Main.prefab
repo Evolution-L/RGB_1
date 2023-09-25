@@ -465,15 +465,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 0}
-  dateText: {fileID: 0}
-  yearText: {fileID: 0}
-  seasonText: {fileID: 0}
-  bagBtn: {fileID: 0}
-  hp: {fileID: 0}
-  mp: {fileID: 0}
-  hpValue: {fileID: 0}
-  mpValue: {fileID: 0}
-  saveButton: {fileID: 0}
 --- !u!1 &2670593603328410954
 GameObject:
   m_ObjectHideFlags: 0

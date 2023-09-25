@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using CustomEvent;
 using UnityEngine;
+using QZSXFrameWork.Tools;
 
 
 public class TimeManager : MonoSingleton<TimeManager>
@@ -13,16 +12,16 @@ public class TimeManager : MonoSingleton<TimeManager>
     const int MAX_MONTH = 12;    
     DateChangeEventArgs dateChangeEventArgs;
 
-    public delegate void MinuteChange();
-    public event MinuteChange onMinuteChange;
-    public delegate void HourChange();
-    public event MinuteChange onHourChange;
-    public delegate void DayChange();
-    public event MinuteChange onDayChange;
-    public delegate void MonthChange();
-    public event MinuteChange onMonthChange;
-    public delegate void YearChange();
-    public event MinuteChange onYearChange;
+    // public delegate void MinuteChange();
+    // public event MinuteChange onMinuteChange;
+    // public delegate void HourChange();
+    // public event MinuteChange onHourChange;
+    // public delegate void DayChange();
+    // public event MinuteChange onDayChange;
+    // public delegate void MonthChange();
+    // public event MinuteChange onMonthChange;
+    // public delegate void YearChange();
+    // public event MinuteChange onYearChange;
 
     private float second = MAX_SECOND;
 
@@ -32,7 +31,7 @@ public class TimeManager : MonoSingleton<TimeManager>
     public override void Init()
     {
         dateChangeEventArgs = new();
-        onMinuteChange?.Invoke();
+        // onMinuteChange?.Invoke();
     }
 
     // Start is called before the first frame update

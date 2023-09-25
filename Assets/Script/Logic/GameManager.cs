@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using CustomEvent;
 using MoleMole;
-using UnityEditor;
 using UnityEngine;
+using QZSXFrameWork.Tools;
+using Asset = QZSXFrameWork.Asset.Asset;
+using QZSXFrameWork.Asset;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -14,12 +14,16 @@ public class GameManager : MonoSingleton<GameManager>
     public GameObject gameRoot;
     private void Awake()
     {
-        Debug.Log(Application.persistentDataPath);
+        GameObject go = new GameObject();
+        Singleton<AssetManager>.Create(go.AddComponent<AssetManager>());
+        go.name = "AssetManager";
+        DontDestroyOnLoad(go);
+        // Debug.Log(Application.persistentDataPath);
         OutPutCamera = GameObject.FindGameObjectWithTag("OutPutCamera");
-        OutPutCamera = OutPutCamera == null ? AssetManager.LoadCamera("OutPutCamera") : OutPutCamera;
+        OutPutCamera = OutPutCamera == null ? Asset.GetInsObj("camera/OutPutCamera.prefab") : OutPutCamera;
 
         uiCamera = GameObject.FindGameObjectWithTag("UICamera");
-        uiCamera = uiCamera == null ? AssetManager.LoadCamera("UICamera") : uiCamera;
+        uiCamera = uiCamera == null ? Asset.GetInsObj("camera/UICamera.prefab") : uiCamera;
 
         OutPutCamera.GetComponent<MainCamera>().ClearCameraStack();
         OutPutCamera.GetComponent<MainCamera>().AddCameraToStack(uiCamera.GetComponent<Camera>());
@@ -32,7 +36,9 @@ public class GameManager : MonoSingleton<GameManager>
         
 
         Singleton<GameDataManager>.Create();
-        gameRoot = GameObject.Instantiate(AssetManager.LoadGameObject("GameRoot.prefab") as GameObject);
+        // gameRoot = GameObject.Instantiate(AssetManager.LoadGameObject("GameRoot.prefab") as GameObject);
+        gameRoot = Asset.GetInsObj("GameRoot.prefab");
+
         DontDestroyOnLoad(gameRoot);
         EventManager.Register<GameStartEventArgs>(InitGame);
 
@@ -62,7 +68,7 @@ public class GameManager : MonoSingleton<GameManager>
     public void InitScene()
     {
         sceneCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        sceneCamera = sceneCamera == null ? AssetManager.LoadCamera("SceneCamera") : sceneCamera;
+        sceneCamera = sceneCamera == null ? Asset.GetInsObj("camera/SceneCamera.prefab") : sceneCamera;
         OutPutCamera.GetComponent<MainCamera>().ClearCameraStack();
         OutPutCamera.GetComponent<MainCamera>().AddCameraToStack(sceneCamera.GetComponent<Camera>());
         OutPutCamera.GetComponent<MainCamera>().AddCameraToStack(uiCamera.GetComponent<Camera>());

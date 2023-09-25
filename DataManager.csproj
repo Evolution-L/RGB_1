@@ -769,5 +769,6 @@
   <ItemGroup>
     <ProjectReference Include="CustomEvent.csproj" />
     <ProjectReference Include="Tools.csproj" />
+    <ProjectReference Include="QZSXFW.csproj" />
   </ItemGroup>
 </Project>

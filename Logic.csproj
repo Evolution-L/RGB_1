@@ -780,5 +780,6 @@
     <ProjectReference Include="CustomUI.csproj" />
     <ProjectReference Include="Role.csproj" />
     <ProjectReference Include="DataManager.csproj" />
+    <ProjectReference Include="QZSXFW.csproj" />
   </ItemGroup>
 </Project>

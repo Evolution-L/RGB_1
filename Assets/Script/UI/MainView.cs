@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
 using CustomEvent;
-using System;
 using MoleMole;
 
 public class MainViewContext : BaseContext
