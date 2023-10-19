@@ -30,24 +30,27 @@ namespace QZSXFrameWork.Asset
         public static string streamingAssetsPath { get { return Application.streamingAssetsPath + "/"; } }
 
         /// <summary>
-        /// 获取AB资源目录  需要设置 Unity宏 AB_MODE
+        /// 获取AB资源目录 需要设置 Unity宏 AB_MODE
         /// </summary>
         public static string assetBundleBasePath
         {
             get
             {
 #if AB_MODE
-            return Application.persistentDataPath + "/" + DirBundleName + "/";
-#else
-                return Application.streamingAssetsPath + "/" + DirBundleName + "/";
+                return $"{Application.persistentDataPath}/{DirBundleName}/";
+#else           
+                return $"{Application.streamingAssetsPath}/{DirBundleName}/";
 #endif
             }
         }
 
-        public static string editorModeAssetPath = Application.dataPath + "/" + editorAssetPath;
+        public static string editorAssetPath = "Resource";
 
-        public static string editorAssetPath = "Resource/";
-
+        /// <summary>
+        /// 编辑器环境下
+        /// </summary>
+        public static string editorModeAssetPath =  $"{Application.dataPath}/{editorAssetPath}/";
+        
         /// <summary>
         /// 资源信息文件路径
         /// </summary>
@@ -87,7 +90,7 @@ namespace QZSXFrameWork.Asset
         }
 
         public static string GetAssetPath(string fileName_)
-        {   
+        {
             // 想要支持大小写命名格式
             // return GetAssetRelativePath(fileName_) + fileName_.ToLower();
             return GetAssetRelativePath(fileName_) + fileName_;

@@ -79,48 +79,48 @@ namespace QZSXFrameWork.Asset
             if (是否需要解压资源)
             {
 #if AB_MODE
-            string files = "";
-            files = File.ReadAllText(AssetPathProcessor.assetInfoFilesPath);
-
-            List<ConfResItem> confResItems = LitJson.JsonMapper.ToObject<List<ConfResItem>>(files);
-            depMapDic = new Dictionary<string, ConfResItem>();
-
-            foreach (var item in confResItems)
-            {
-                foreach (var it in Assist.encryptList)
-                {
-                    if (item.file == it)
-                    {
-                        item.mark = true;
-                        break;
-                    }
-                        
-                }
-                depMapDic.Add(item.file, item);
-            }
-            Debug.LogError(depMapDic.Count);
-        }
-        else// if(Application.platform != RuntimePlatform.WindowsEditor)
-        {
-            string files = "";
-
-            if(Application.isEditor || Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer)
-            {
+                string files = "";
                 files = File.ReadAllText(AssetPathProcessor.assetInfoFilesPath);
+
+                List<ConfResItem> confResItems = LitJson.JsonMapper.ToObject<List<ConfResItem>>(files);
+                depMapDic = new Dictionary<string, ConfResItem>();
+
+                foreach (var item in confResItems)
+                {
+                    foreach (var it in Assist.encryptList)
+                    {
+                        if (item.file == it)
+                        {
+                            item.mark = true;
+                            break;
+                        }
+
+                    }
+                    depMapDic.Add(item.file, item);
+                }
+                Debug.LogError(depMapDic.Count);
             }
             else
             {
-                files = Resources.Load<TextAsset>("files").text;
-            }
-            
+                string files = "";
 
-            List<ConfResItem> confResItems = LitJson.JsonMapper.ToObject<List<ConfResItem>>(files);
-            depMapDic = new Dictionary<string, ConfResItem>();
+                if (Application.isEditor || Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer)
+                {
+                    files = File.ReadAllText(AssetPathProcessor.assetInfoFilesPath);
+                }
+                else
+                {
+                    files = Resources.Load<TextAsset>("files").text;
+                }
 
-            foreach (var item in confResItems)
-            {
-                depMapDic.Add(item.file, item);
-            }
+
+                List<ConfResItem> confResItems = LitJson.JsonMapper.ToObject<List<ConfResItem>>(files);
+                depMapDic = new Dictionary<string, ConfResItem>();
+
+                foreach (var item in confResItems)
+                {
+                    depMapDic.Add(item.file, item);
+                }
 #endif
             }
 
