@@ -78,6 +78,7 @@ public class GenAB : EditorWindow
             files[i] = files[i].Replace("\\", "/");
             Variant_ = files[i].Substring(files[i].LastIndexOf("/") + 1);
             // SetDirectoryName(Variant_, files[i]);
+            string[] fileEntries = Directory.GetFiles(files[i], "*.*", SearchOption.AllDirectories);
         }
 
         List<string> allFiles = GetAllFiles(rootPath);

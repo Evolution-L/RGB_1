@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Test001 : MonoBehaviour
 {
+     public InputField inputField;
     public string aaa;
     public void test1()
     {
@@ -14,6 +15,7 @@ public class Test001 : MonoBehaviour
     public void test2()
     {
         // GameManager.Instance.EndGame();
+        inputField.Select();
     }    
     public void test3()
     {
