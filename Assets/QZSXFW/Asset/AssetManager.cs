@@ -144,6 +144,8 @@ namespace QZSXFrameWork.Asset
 #if UNITY_EDITOR && !AB_MODE
             filePath = AssetPathProcessor.GetAssetRelativePath(filePath) + AssetPathProcessor.GetAssetShortName(filePath);
             rootPath = rootPath + filePath;
+            
+            // 这里将mp3转换为wav  音频统一使用wav格式
             if (!File.Exists(rootPath))
             {
                 string shortname = filePath.Substring(0, filePath.LastIndexOf("."));

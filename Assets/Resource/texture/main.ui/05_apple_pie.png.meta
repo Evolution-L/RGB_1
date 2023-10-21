@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2422c8bbc1c6f9c4e96fc131858a6143
+guid: 4897dbf8aace45e469514752d9d4b6c8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -143,5 +143,5 @@ TextureImporter:
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 
-  assetBundleName: test
-  assetBundleVariant: 
+  assetBundleName: data/prefab/ui/main
+  assetBundleVariant: one

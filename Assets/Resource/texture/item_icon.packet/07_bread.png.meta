@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8e909e31e2ec34e4fa92afa93a7680d7
+guid: 2422c8bbc1c6f9c4e96fc131858a6143
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -143,5 +143,5 @@ TextureImporter:
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 
-  assetBundleName: test
-  assetBundleVariant: 
+  assetBundleName: data/texture/item_icon.packet
+  assetBundleVariant: one

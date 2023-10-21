@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e22b38eb5c3d3d641a481c8c76713a5e
+guid: e25e588a2abe200419e931fa13c78018
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -143,5 +143,5 @@ TextureImporter:
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 
-  assetBundleName: test
-  assetBundleVariant: 
+  assetBundleName: data/texture/common.monofile/18_burrito.png
+  assetBundleVariant: one

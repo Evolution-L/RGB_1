@@ -56,6 +56,7 @@ namespace QZSXFrameWork.Asset
         /// </summary>
         public static string assetInfoFilesPath = $"{Application.persistentDataPath}/{DirBundleName}/{assetInfoFiles}";
 
+        // 根据后缀获取文件夹名称
         public static string GetAssetRelativePath(string fileName_)
         {
             string suffix = fileName_.Substring(fileName_.LastIndexOf(".") + 1);

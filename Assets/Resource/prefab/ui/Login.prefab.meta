@@ -3,5 +3,5 @@ guid: 0fb2a220bfde44b4b980f63877c2b175
 PrefabImporter:
   externalObjects: {}
   userData: 
-  assetBundleName: test
-  assetBundleVariant: 
+  assetBundleName: data/prefab/ui/login
+  assetBundleVariant: one

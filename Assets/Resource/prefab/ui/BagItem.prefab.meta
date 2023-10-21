@@ -3,5 +3,5 @@ guid: e0364a464a5b55d4284da517a069c8cc
 PrefabImporter:
   externalObjects: {}
   userData: 
-  assetBundleName: test
-  assetBundleVariant: 
+  assetBundleName: data/prefab/ui/bagitem
+  assetBundleVariant: one
