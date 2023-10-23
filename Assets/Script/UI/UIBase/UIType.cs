@@ -9,14 +9,14 @@
 namespace MoleMole
 {
 	public class UIType {
-
+        private string rootPath = @"prefab/ui.monofile/";
         public string Path { get; private set; }
 
         public string Name { get; private set; }
 
         public UIType(string path)
         {
-            Path = path;
+            Path = $"{rootPath}{path}.prefab";
             Name = path.Substring(path.LastIndexOf('/') + 1);
         }
 

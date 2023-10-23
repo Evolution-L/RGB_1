@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4897dbf8aace45e469514752d9d4b6c8
+guid: e22b38eb5c3d3d641a481c8c76713a5e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -143,5 +143,5 @@ TextureImporter:
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 
-  assetBundleName: data/prefab/ui.monofile/main
+  assetBundleName: data/texture/item_icon.monofile/11_bun
   assetBundleVariant: one

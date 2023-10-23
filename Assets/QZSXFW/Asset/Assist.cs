@@ -21,18 +21,12 @@ namespace QZSXFrameWork.Asset
     }
 
     /// <summary>
-    /// AB包内资源的类型
+    /// AB包类型
     /// </summary>
-    public enum AssetBundleExportType
+    public enum AssetBundleType
     {
-        /// 独立资源（背景音乐、场景、球、球员、时装、特效、简模、配置档、字体、prefab、UI、部分UI贴图）
-        Asset = 1,
-
-        //操作型集合资源（音效、图标ICON、球员动画anim文件、动画曲线asset文件）    
-        UseSet = 2,
-
-        ///不可操作集合资源（texture依赖）
-        NotUseSet = 3,
+        packet = 1,
+        monofile = 2,
     }
 
     /// <summary>

@@ -1,10 +1,6 @@
 using System;
 using UnityEngine;
 
-namespace QZSXFrameWork.Tools
-{
-    
-}
 public static class Singleton<T> where T : class
 {
     /*	Instance	*/

@@ -31,7 +31,7 @@ namespace MoleMole
         {
             if (_UIDict.ContainsKey(uiType) == false || _UIDict[uiType] == null)
             {
-                GameObject go = Asset.GetInsObj($"ui/{uiType.Path}.prefab");
+                GameObject go = Asset.GetPrefab(uiType.Path);
                 go.transform.SetParent(_canvas, false);
                 go.name = uiType.Name;
                 _UIDict.AddOrReplace(uiType, go);

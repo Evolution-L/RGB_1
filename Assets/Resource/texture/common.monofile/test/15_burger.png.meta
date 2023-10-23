@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4897dbf8aace45e469514752d9d4b6c8
+guid: 8e909e31e2ec34e4fa92afa93a7680d7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -143,5 +143,5 @@ TextureImporter:
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 
-  assetBundleName: data/prefab/ui.monofile/main
+  assetBundleName: data/texture/common.monofile/test/15_burger
   assetBundleVariant: one

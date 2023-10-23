@@ -75,7 +75,7 @@ public class GenAB : EditorWindow
         Debug.LogError("target windows");
 #endif
         SetABName();
-        // var manifest = BuildPipeline.BuildAssetBundles(assetPath, BuildAssetBundleOptions.ChunkBasedCompression, BuildTarget_);
+        var manifest = BuildPipeline.BuildAssetBundles(assetPath, BuildAssetBundleOptions.ChunkBasedCompression, BuildTarget_);
     }
 
     private void SetABName()
@@ -144,6 +144,12 @@ abstract class IGenABNameStrategy
         assetImporter.assetBundleName = abName;
         assetImporter.assetBundleVariant = variant;
     }
+
+    protected string GetType(string path)
+    {
+        var y = path.Replace("\\", "/").Replace("Assets/Resource", "");
+        return AssetConfig.folderABType[y];
+    }
 }
 
 class FolderProcessor
@@ -210,7 +216,7 @@ class GenPrefabABNameStrategy : IGenABNameStrategy
                     foreach (var file in Directory.GetFiles(item, "*.*", SearchOption.AllDirectories).Where(file => !file.EndsWith(".meta")).ToArray())
                     {
                         string abName = file.Replace("\\", "/");
-                        abName = ClipPath(abName).Replace(abName[abName.LastIndexOf('.') ..], "");
+                        abName = ClipPath(abName).Replace(abName[abName.LastIndexOf('.')..], "");
                         SetABName(file, abName);
                     }
                     break;
@@ -221,7 +227,7 @@ class GenPrefabABNameStrategy : IGenABNameStrategy
 
 class GenTextureABNameStrategy : IGenABNameStrategy
 {
-    string uiPath = @"Assets/Resource/prefab/ui/";
+    string uiPath = @"Assets/Resource/prefab/ui.monofile/";
     public override void SetABName(string filePath)
     {
         string rootPath = filePath;
@@ -250,7 +256,7 @@ class GenTextureABNameStrategy : IGenABNameStrategy
                     {
                         string abName = file.Replace("\\", "/");
                         abName = ClipPath(abName);
-                        abName.Replace(abName[abName.LastIndexOf('.') ..], "");
+                        abName = abName.Replace(abName[abName.LastIndexOf('.')..], "");
                         SetABName(file, abName);
                     }
                     break;
@@ -289,7 +295,7 @@ class GenTextureABNameStrategy : IGenABNameStrategy
     private string GetDirMark(string filePath)
     {
         string dirName = Path.GetDirectoryName(filePath);
-        return dirName.Substring(dirName.IndexOf('.') + 1);
+        return dirName[(dirName.IndexOf('.') + 1)..];
     }
 }
 /// <summary>
@@ -301,11 +307,11 @@ class GenAnimAssetABNameStrategy : IGenABNameStrategy
 {
     public override void SetABName(string filePath)
     {
+        string prefabPath = @"Assets/Resource/prefab/";
+        string rootbPath = @"Assets/Resource/anim_asset/";
 
-        string rootPath = filePath;
         // string[] fileEntries = Directory.GetFiles(filePath, "*.*", SearchOption.AllDirectories).Where(file => !file.EndsWith(".meta")).ToArray();
         string[] folders = Directory.GetDirectories(filePath);
-        string[] strings = new string[2];
 
         foreach (var item in folders)
         {
@@ -323,13 +329,18 @@ class GenAnimAssetABNameStrategy : IGenABNameStrategy
                     }
                     break;
                 default:
-                    // // file 为单个文件
-                    // foreach (var file in Directory.GetFiles(item, "*.*", SearchOption.AllDirectories).Where(file => !file.EndsWith(".meta")).ToArray())
-                    // {
-                    //     string abName = file.Replace("\\", "/");
-                    //     abName = ClipPath(abName).Replace(abName[abName.LastIndexOf('.') ..], "");
-                    //     SetABName(file, abName);
-                    // }
+                    foreach (var dir in Directory.GetDirectories(item, "*", SearchOption.TopDirectoryOnly).Where(file => !file.EndsWith(".meta")).ToArray())
+                    {
+                        // file 为单个文件
+                        foreach (var file in Directory.GetFiles(dir, "*.*", SearchOption.AllDirectories).Where(file => !file.EndsWith(".meta")).ToArray())
+                        {
+                            string abName = file.Replace("\\", "/");
+                            abName = abName.Replace(rootbPath, prefabPath);
+                            abName = ClipPath(abName);
+                            abName = abName[..abName.LastIndexOf('/')];
+                            SetABName(file, abName);
+                        }
+                    }
                     break;
             }
         }

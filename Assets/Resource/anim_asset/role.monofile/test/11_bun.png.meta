@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4897dbf8aace45e469514752d9d4b6c8
+guid: 6d51dab76a2a5aa4b9acdc188f9ed4fa
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 10
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -143,5 +143,5 @@ TextureImporter:
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 
-  assetBundleName: data/prefab/ui.monofile/main
+  assetBundleName: data/prefab/role.monofile/test
   assetBundleVariant: one

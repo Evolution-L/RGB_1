@@ -1,5 +1,5 @@
 using UnityEngine;
-using Asset = QZSXFrameWork.Asset.Asset;
+// using Asset = QZSXFrameWork.Asset.Asset;
 
 public interface IGrowableFactory
 {
@@ -12,10 +12,10 @@ public class GrowableFactory : IGrowableFactory
     {
         if (GrowableCfg.Instance.cfgs.TryGetValue(id, out GrowableCfgItem item))
         {
-            GameObject go = Asset.GetInsObj($"growable/{item.res}.prefab");
-            IGrowable growable = go.AddComponent<Growable>() as IGrowable;
+            // GameObject go = Asset.GetInsObj($"growable/{item.res}.prefab");
+            // IGrowable growable = go.AddComponent<Growable>() as IGrowable;
 
-            return growable;
+            // return growable;
         }
 
         return null;
