@@ -6,6 +6,7 @@ using System.Linq;
 using PlasticGui.WorkspaceWindow.QueryViews.Changesets;
 using Unity.VisualScripting;
 using dnlib.DotNet.Emit;
+using UnityEditor.Build.Content;
 /// <summary>
 /// 该工具还有很多问题,  当前已知:
 /// 1. 不够灵活
@@ -76,6 +77,7 @@ public class GenAB : EditorWindow
 #endif
         SetABName();
         var manifest = BuildPipeline.BuildAssetBundles(assetPath, BuildAssetBundleOptions.ChunkBasedCompression, BuildTarget_);
+        InitFiles(manifest);
     }
 
     private void SetABName()
@@ -103,6 +105,27 @@ public class GenAB : EditorWindow
         //     assetImporter.assetBundleName = "test";
         //     assetImporter.assetBundleVariant = null;
         // }
+    }
+
+
+    private void InitFiles(AssetBundleManifest manifest)
+    {
+        Dictionary<string, ABConfig> aBConfigs = new();
+        var aa =  manifest.GetAllAssetBundles();
+        foreach (var item in aa)
+        {
+            ABConfig aBConfig = new();
+            aBConfig.file = item;
+            var bb = manifest.GetAllDependencies(item);
+            foreach (var aaa in bb)
+            {
+                aBConfig.depends.Add(aaa);
+            }
+            aBConfigs.Add(item, aBConfig);
+        }
+
+        var json = LitJson.JsonMapper.ToJson(aBConfigs);
+        File.WriteAllText(Application.dataPath.Replace("Assets", "output/") + "files.json", json);
     }
 
     private List<string> GetAllFiles(string path)
@@ -346,3 +369,17 @@ class GenAnimAssetABNameStrategy : IGenABNameStrategy
         }
     }
 }
+
+
+    /// <summary>
+    /// 记录AB包的信息
+    /// </summary>
+    public class ABConfig
+    {
+        public string file;
+        public string md5;
+        public int size;
+        public int type;
+        public bool mark;
+        public List<string> depends = new();
+    }

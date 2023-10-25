@@ -9,16 +9,20 @@ namespace QZSXFrameWork.Asset
         public static GameObject GetPrefab(string path)
         {
             GameObject go = null;
-            Singleton<AssetManager>.Instance.LoadAssetSync(path, 
+            Singleton<AssetManager>.Instance.LoadAssetSync<GameObject>(path, 
                 (o) => {
                     if (o != null)
                     {
-                        go = GameObject.Instantiate(o.asset) as GameObject;
-                        
+                        go = GameObject.Instantiate(o) as GameObject;
+                        return go;
+                    }
+                    else
+                    {
+                        Debug.LogError($"资源加载失败:{path}");
+                        return null;    
                     }
                 }
             );
-
             return go;
         }
     }

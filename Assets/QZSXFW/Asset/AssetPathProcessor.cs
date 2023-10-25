@@ -10,6 +10,7 @@ namespace QZSXFrameWork.Asset
     /// </summary>
     public static class AssetPathProcessor
     {
+        public static string assetBundleVariant = ".one";
         /// <summary>
         /// AssetBundle文件夹名称
         /// </summary>
@@ -32,15 +33,18 @@ namespace QZSXFrameWork.Asset
         /// <summary>
         /// 获取AB资源目录 需要设置 Unity宏 AB_MODE
         /// </summary>
-        public static string assetBundleBasePath
+        public static string aBPersistentPath
         {
             get
             {
-#if AB_MODE
-                return $"{Application.persistentDataPath}/{DirBundleName}/";
-#else           
-                return $"{Application.streamingAssetsPath}/{DirBundleName}/";
-#endif
+                return $"{Application.persistentDataPath}/";
+            }
+        }
+        public static string aBStreamingPath
+        {
+            get
+            {
+                return $"{Application.streamingAssetsPath}/";
             }
         }
 
