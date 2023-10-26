@@ -23,12 +23,10 @@ namespace QZSXFrameWork.Asset
         public AssetBundle assetBundle;
         public ABType aBType = ABType.None;
         public Object asset;
-        
         /// <summary>
         /// 引用为 0 时的生存时间, 逾期卸载, 单位秒
         /// </summary>
         public float timeToLive = 5;
-
         /// <summary>
         /// 加载完成的时间
         /// </summary>
@@ -36,17 +34,14 @@ namespace QZSXFrameWork.Asset
         /// <summary>
         /// 被一个对象引用时这里储存对象的弱引用
         /// </summary>
-        public List<WeakReference> weakReferenceList = new List<WeakReference>();
+        public List<WeakReference> weakReferenceList = new();
         /// <summary>
         /// 被其他AB依赖时, 这里加一
         /// </summary>
         public int referenceCount = 0;
-
         /// <summary>
         /// 储存当前资源单元的依赖项
         /// </summary>
-        public HashSet<AssetLoader> depends = new HashSet<AssetLoader>();
-
-
+        public List<AssetLoader> depends = new();
     }
 }

@@ -118,7 +118,7 @@ namespace QZSXFrameWork.Asset
             {
                 if (_loaderCache[item].IsUnused)
                 {
-                    _loaderCache[item].Destroy();
+                    _loaderCache[item].UnLoadAsset();
                 }
             }
         }

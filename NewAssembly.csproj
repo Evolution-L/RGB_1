@@ -69,6 +69,8 @@
     <Compile Include="Assets\QZSXFW\Asset\ABConfig.cs" />
     <Compile Include="Assets\QZSXFW\Asset\AssetManager.cs" />
     <Compile Include="Assets\QZSXFW\Asset\Asset.cs" />
+    <Compile Include="Assets\QZSXFW\Asset\ABAssetLoader.cs" />
+    <Compile Include="Assets\QZSXFW\Asset\EditorAssetLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\QZSXFW\QZSXFW.asmdef" />
