@@ -4,10 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ����״̬: ʹ�ð�λ�������|��������ĳ��״̬λ�����磬�������һ����ʾ��ɫ�Ƿ������ƶ��ı�־λ�������������ã�playerState |= Moving;
-// ȡ��״̬�� ʹ�ð�λ������Ͱ�λȡ��������& �� ~����ȡ��ĳ��״̬λ�����磬ȡ���ƶ�״̬��playerState &= ~Moving;
-// ���״̬�� ʹ�ð�λ�������&�������ĳ��״̬�Ƿ񱻼�����磬����Ƿ�������Ծ��if (playerState & Jumping) { /* ִ����Ծ���� */ }
-// �л�״̬�� ʹ�ð�λ��������^�����л�ĳ��״̬λ�����״̬λ�Ѿ�������л�����ȡ��״̬�����״̬λδ������л���������״̬�����磬�л��ƶ�״̬��playerState ^= Moving;
+// 设置状态: 使用按位或操作（|）来设置某个状态位。例如，如果你有一个表示角色是否正在移动的标志位，可以这样设置：playerState |= Moving;
+// 取消状态： 使用按位与操作和按位取反操作（& 和 ~）来取消某个状态位。例如，取消移动状态：playerState &= ~Moving;
+// 检查状态： 使用按位与操作（&）来检查某个状态是否被激活。例如，检查是否正在跳跃：if (playerState & Jumping) { /* 执行跳跃动作 */ }
+// 切换状态： 使用按位异或操作（^）来切换某个状态位。如果状态位已经激活，则切换它将取消状态；如果状态位未激活，则切换它将设置状态。例如，切换移动状态：playerState ^= Moving;
 
 [Flags]
 public enum State
@@ -16,12 +16,12 @@ public enum State
     Die = 1 << 1,
 
     Moving = 1 << 2,
-    Stop = 1 << 3, // ��ֹ�Լ��ƶ�
+    Stop = 1 << 3, // 禁止自己移动
 
-    BeMoving = 1 << 4, // ���ƶ�
-    NotBeMove = 1 << 5, // ��ֹ���ƶ�
+    BeMoving = 1 << 4, // 被移动
+    NotBeMove = 1 << 5, // 禁止被移动
 
-    NotMove = Stop | NotBeMove, // ��ֹ�κη�ʽ���ƶ�
+    NotMove = Stop | NotBeMove, // 禁止任何方式的移动
 }
 public class StateMachine
 {
@@ -46,7 +46,7 @@ public class StateMachine
     {
         if (!state.HasFlag(State.Alive))
         {
-            Debug.Log("��ǰ״̬Ϊ ���� , �����л�״̬");
+            Debug.Log("当前状态为 死亡 , 不能切换状态");
             return;
         }
         else if (CheckState(targetState))
@@ -86,7 +86,7 @@ public class StateMachine
     }
 
     /// <summary>
-    /// �޸�״̬ʹ�� ActivateState �� CancelState, �˷�����������
+    /// 修改状态使用 ActivateState 和 CancelState, 此方法仅测试用
     /// </summary>
     /// <param name="targetState"></param>
     public void SwitchState(State targetState)
@@ -101,7 +101,7 @@ public class StateMachine
             CancelState(State.Moving);
         }
     }
-    // ��������
+    // 死亡方法
     public void SwitchStateAlive() 
     {
         state = 0;

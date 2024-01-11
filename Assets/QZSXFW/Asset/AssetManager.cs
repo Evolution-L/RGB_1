@@ -13,8 +13,11 @@ namespace QZSXFrameWork.Asset
     {
         internal delegate Object LoadAssetHandler(Object asset);
         internal delegate void LoadAssetCompleteHandler(AssetLoader assetLoader);
+        // 加载中
         private HashSet<AssetLoader> _loadingLoader = new HashSet<AssetLoader>();
+        // 记载完成的
         private Dictionary<string, AssetLoader> _loaderCache = new Dictionary<string, AssetLoader>();
+        // 所有的loader
         private Dictionary<string, AssetLoader> _allLoaderCache = new Dictionary<string, AssetLoader>();
 
         Dictionary<string, ABConfig> aBConfigs = new();
@@ -66,7 +69,8 @@ namespace QZSXFrameWork.Asset
                 return assetLoader;
             }
             else
-                return new EditorAssetLoader(path, this);
+                assetLoader = new EditorAssetLoader(path, this);
+                // return new EditorAssetLoader(path, this);
 #else       
             if (!isAB)
             {
@@ -97,11 +101,14 @@ namespace QZSXFrameWork.Asset
             {
                 ABConfig ab = aBConfigs[path];
                 var loder = new ABAssetLoader(path,ab ,this);
+                _loadingLoader.Add(path, loder);
                 _allLoaderCache.Add(path, loder);
                 return loder;
             }
                 
 #endif
+
+            return assetLoader;
         }
 
         internal void OnCompleteLoad(AssetLoader assetLoader)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace QZSXFrameWork.Asset
 {
@@ -23,8 +24,10 @@ namespace QZSXFrameWork.Asset
             base.LoaderSyn();
             if (assetInfo.asset == null)
             {
+#if UNITY_EDITOR && !AB_MODE
                 // 仅适用于编辑器环境
-                assetInfo.asset = UnityEditor.AssetDatabase.LoadMainAssetAtPath($"{path}{assetInfo.assetPath}");
+                assetInfo.asset = AssetDatabase.LoadMainAssetAtPath($"{path}{assetInfo.assetPath}");
+#endif
             }
             state = ALState.Complete;
             isComplete = true;

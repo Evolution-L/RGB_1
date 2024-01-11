@@ -47,9 +47,6 @@ namespace QZSXFrameWork.Asset
                 }
                 else
                 {
-                    //D:\Project\Unity\RGB_1\Assets\StreamingAssets\data\prefab\camera.packet.one
-                    //D:/Project/Unity/RGB_1/Assets/StreamingAssets/data/prefab/camera.packet.one
-
                     s = ALState.Error;
                     Debug.LogError($"找不到AB文件{abBuildPath}");
                     Debug.LogError($"找不到AB文件{abCachePath}");
