@@ -55,6 +55,7 @@ public class HotUpdate : MonoBehaviour
 
     public void StartGame()
     {
+#if AB_MODE
         if (Application.platform != RuntimePlatform.WindowsEditor)
         {
             LoadMetadataForAOTAssemblies();
@@ -68,6 +69,7 @@ public class HotUpdate : MonoBehaviour
                 Debug.Log($"Load: {assPath}");
             }
         }
+#endif
 
         Debug.Log("热更处理完成, 加载预制体启动游戏逻辑");
         gameInit = true;

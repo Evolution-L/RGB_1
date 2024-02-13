@@ -9,7 +9,7 @@
 namespace MoleMole
 {
 	public class UIType {
-        private string rootPath = @"prefab/ui.monofile/";
+        private string rootPath = @"ui/";
         public string Path { get; private set; }
 
         public string Name { get; private set; }
