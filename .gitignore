@@ -8,7 +8,8 @@ spine-csharp.csproj
 spine-timeline.csproj
 spine-timeline-editor.csproj
 spine-unity.csproj
-.vsconfig
+*.vsconfig
+*.csproj
 Assembly-CSharp.csproj
 Assembly-CSharp-Editor.csproj
 RGB_1.sln
