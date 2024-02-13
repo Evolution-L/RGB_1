@@ -101,7 +101,7 @@ namespace QZSXFrameWork.Asset
             {
                 ABConfig ab = aBConfigs[path];
                 var loder = new ABAssetLoader(path,ab ,this);
-                _loadingLoader.Add(path, loder);
+                _loadingLoader.Add(loder);
                 _allLoaderCache.Add(path, loder);
                 return loder;
             }
