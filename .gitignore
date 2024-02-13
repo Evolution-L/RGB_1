@@ -4,6 +4,7 @@ obj/
 Temp/
 UserSettings/
 .vs/
+.vscode/
 spine-csharp.csproj
 spine-timeline.csproj
 spine-timeline-editor.csproj
