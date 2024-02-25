@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using HybridCLR;
+using QZSXFrameWork;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -71,7 +72,7 @@ public class HotUpdate : MonoBehaviour
         }
 #endif
 
-        Debug.Log("热更处理完成, 加载预制体启动游戏逻辑");
+        D.Log("热更处理完成, 加载预制体启动游戏逻辑");
         gameInit = true;
 
         // GameObject.Instantiate(Resources.Load("GameManager") as GameObject);

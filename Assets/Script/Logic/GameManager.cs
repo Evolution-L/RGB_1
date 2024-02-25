@@ -4,6 +4,7 @@ using UnityEngine;
 using QZSXFrameWork.Tools;
 // using Asset = QZSXFrameWork.Asset.Asset;
 using QZSXFrameWork.Asset;
+using QZSXFrameWork;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -64,7 +65,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void InitGame(GameStartEventArgs gameStartEventArgs)
     {
-        Debug.Log(TimeManager.Instance.ToString());
+        D.Log(TimeManager.Instance.ToString());
         Singleton<GameDataManager>.Instance.LoadGameArchive(gameStartEventArgs.saveFileName);
 
         InitScene();
